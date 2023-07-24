@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		336184802A6E5AE7005C8CB4 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361847F2A6E5AE7005C8CB4 /* Drink.swift */; };
+		336184822A6E5B49005C8CB4 /* FiveGuysDrinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336184812A6E5B49005C8CB4 /* FiveGuysDrinks.swift */; };
 		DE137B8B2A6E1A6D00F04665 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE137B8A2A6E1A6D00F04665 /* main.swift */; };
 		DE137B922A6E200A00F04665 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE137B912A6E200A00F04665 /* model.swift */; };
 		DEEF629F2A6E57D100891228 /* burger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEF629E2A6E57D100891228 /* burger.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3361847F2A6E5AE7005C8CB4 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		336184812A6E5B49005C8CB4 /* FiveGuysDrinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveGuysDrinks.swift; sourceTree = "<group>"; };
 		DE137B872A6E1A6D00F04665 /* Kiosk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Kiosk; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE137B8A2A6E1A6D00F04665 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		DE137B912A6E200A00F04665 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 			children = (
 				DE137B8A2A6E1A6D00F04665 /* main.swift */,
 				DE137B912A6E200A00F04665 /* model.swift */,
+				3361847F2A6E5AE7005C8CB4 /* Drink.swift */,
+				336184812A6E5B49005C8CB4 /* FiveGuysDrinks.swift */,
 				DEEF629E2A6E57D100891228 /* burger.swift */,
 			);
 			path = Kiosk;
@@ -128,6 +134,8 @@
 			files = (
 				DE137B922A6E200A00F04665 /* model.swift in Sources */,
 				DEEF629F2A6E57D100891228 /* burger.swift in Sources */,
+				336184822A6E5B49005C8CB4 /* FiveGuysDrinks.swift in Sources */,
+				336184802A6E5AE7005C8CB4 /* Drink.swift in Sources */,
 				DE137B8B2A6E1A6D00F04665 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,7 +260,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RR4V44S8V9;
+				DEVELOPMENT_TEAM = HJ943JVKX7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -263,7 +271,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RR4V44S8V9;
+				DEVELOPMENT_TEAM = HJ943JVKX7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

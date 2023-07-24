@@ -22,6 +22,12 @@ while true {
     case "2":
         break
     case "3":
+        let drinkOrder = DrinkManager().orderDrinks()
+        drinkOrder.forEach {
+            print($0.name)
+            print($0.price)
+        }
+        print("-----> drinkOrder: \(drinkOrder)")
         break
     case "4":
         break
