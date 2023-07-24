@@ -27,3 +27,6 @@ class Burger: Menu {
 class Dogs: Menu {
     
 }
+class Sandwiches: Menu {
+    
+}
