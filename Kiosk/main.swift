@@ -24,6 +24,7 @@ while true {
     case "3":
         break
     case "4":
+        orderSandwiches()
         break
     default:
         print("올바른 메뉴를 입력해주세요.")
