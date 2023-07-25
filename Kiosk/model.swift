@@ -17,13 +17,11 @@ class Menu {
     }
 }
 
-class Burger: Menu {
+class Menu_fries: Menu {
+    var size: String = ""
     
-    func orderSmallSize() {
-        //
+    init(name: String, price: Double, size: String) {
+        self.size = size
+        super.init(name, price)
     }
-}
-
-class Dogs: Menu {
-    
 }
