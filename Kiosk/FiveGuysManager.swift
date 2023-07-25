@@ -1,5 +1,5 @@
 //
-//  FiveGuysDrinks.swift
+//  FiveGuysManager.swift
 //  Kiosk
 //
 //  Copyright (c) 2023 z-wook. All right reserved.
@@ -7,19 +7,24 @@
 
 import Foundation
 
-final class DrinkManager {
+final class UserInfo {
+    var pickMenu: [Menu] = []
     
-    var pickedMenus: [Menu] = PickMenus.pickedMenus
+    func updateMenu(data: Menu) {}
     
-    func orderDrinks() -> [Menu] {
-        let drinkList: [Menu] = Drink.allCases.map {
-            Menu($0.drinkName, $0.drinkPrice)
+    func removeMenu(data: Menu) {}
+}
+
+final class OrderManager {
+    func orderDrinks(type: Product, userInfo: UserInfo) {
+        var drinkList: [Menu] = []
+        
+        for i in type.productName.indices {
+            drinkList.append(Menu(type.productName[i], type.productPrice[i]))
         }
         
         while true {
-            print("pickMenu: \(pickedMenus)")
-            
-            printDrinksMenu(drinkList)
+            printDrinksMenu(type: type, drinkList, pickMenus: userInfo.pickMenu)
             
             guard let userInput = readLine(),
                   let userInput = Int(userInput) else {
@@ -27,7 +32,7 @@ final class DrinkManager {
                 continue
             }
             
-            if pickedMenus.isEmpty && userInput == drinkList.count + 1 {
+            if userInfo.pickMenu.isEmpty && userInput == drinkList.count + 1 {
                 print("올바른 메뉴를 입력해주세요. \n")
                 continue
             }
@@ -35,20 +40,20 @@ final class DrinkManager {
             switch userInput {
             case 0:
                 print("뒤로가기를 선택하셨습니다. \n")
-                return pickedMenus
+                return
             case (1...drinkList.count):
-                pickedMenus.append(drinkList[userInput - 1])
+                userInfo.updateMenu(data: drinkList[userInput - 1])
                 print("\(drinkList[userInput - 1].name)를 주문하셨습니다. 가격은 \(drinkList[userInput - 1].price)000원 입니다. \n")
                 continue
             case (drinkList.count + 1): // 삭제
-                printPickedMenu()
+                printPickedMenu(pickMenus: userInfo.pickMenu)
                 guard let userInput = readLine(),
                       let userInput = Int(userInput) else {
                     print("올바른 메뉴를 입력해주세요. \n")
                     continue
                 }
                 if userInput == 0 { break }
-                pickedMenus.remove(at: userInput - 1)
+                userInfo.removeMenu(data: userInfo.pickMenu[userInput - 1])
                 continue
             default:
                 print("올바른 메뉴를 입력해주세요. \n")
@@ -57,22 +62,22 @@ final class DrinkManager {
     }
 }
 
-private extension DrinkManager {
-    func printDrinksMenu(_ drinkList: [Menu]) {
-        print("[ Drinks MENU ]")
+private extension OrderManager {
+    func printDrinksMenu(type: Product, _ drinkList: [Menu], pickMenus: [Menu]) {
+        print("[ \(type.name) MENU ]")
         for (index, drink) in drinkList.enumerated() {
             print("\(index + 1). \(drink.name) | W \(drink.price) |")
         }
-        if !pickedMenus.isEmpty {
+        if !pickMenus.isEmpty {
             print("====================================")
             print("\(drinkList.count + 1). 메뉴 취소")
         }
         print("0. 뒤로가기\n")
     }
     
-    func printPickedMenu() {
-        print("취소할 음료를 선택해주세요.")
-        for (index, drink) in pickedMenus.enumerated() {
+    func printPickedMenu(pickMenus: [Menu]) {
+        print("취소할 식품을 선택해주세요.")
+        for (index, drink) in pickMenus.enumerated() {
             print("\(index + 1). \(drink.name)")
         }
         print("0. 뒤로가기\n")

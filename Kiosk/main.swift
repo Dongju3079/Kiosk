@@ -22,15 +22,10 @@ while true {
     case "2":
         break
     case "3":
-        let drinkOrder = DrinkManager().orderDrinks()
-        drinkOrder.forEach {
-            print($0.name)
-            print($0.price)
-        }
-        print("-----> drinkOrder: \(drinkOrder)")
-        print("-----> pickMenus: \(PickMenus.pickedMenus)")
+        OrderManager().orderDrinks(type: .drink, userInfo: UserInfo())
         break
     case "4":
+        OrderManager().orderDrinks(type: .shake, userInfo: UserInfo())
         break
     default:
         print("올바른 메뉴를 입력해주세요.")

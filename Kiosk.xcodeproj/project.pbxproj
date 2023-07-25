@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		336184802A6E5AE7005C8CB4 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361847F2A6E5AE7005C8CB4 /* Drink.swift */; };
-		336184822A6E5B49005C8CB4 /* FiveGuysDrinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336184812A6E5B49005C8CB4 /* FiveGuysDrinks.swift */; };
-		336184842A6E8AEB005C8CB4 /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336184832A6E8AEB005C8CB4 /* Shake.swift */; };
+		336184802A6E5AE7005C8CB4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361847F2A6E5AE7005C8CB4 /* Product.swift */; };
+		336184822A6E5B49005C8CB4 /* FiveGuysManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336184812A6E5B49005C8CB4 /* FiveGuysManager.swift */; };
 		DE137B8B2A6E1A6D00F04665 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE137B8A2A6E1A6D00F04665 /* main.swift */; };
 		DE137B922A6E200A00F04665 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE137B912A6E200A00F04665 /* model.swift */; };
 		DEEF629F2A6E57D100891228 /* burger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEF629E2A6E57D100891228 /* burger.swift */; };
@@ -28,9 +27,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3361847F2A6E5AE7005C8CB4 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
-		336184812A6E5B49005C8CB4 /* FiveGuysDrinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveGuysDrinks.swift; sourceTree = "<group>"; };
-		336184832A6E8AEB005C8CB4 /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
+		3361847F2A6E5AE7005C8CB4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		336184812A6E5B49005C8CB4 /* FiveGuysManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveGuysManager.swift; sourceTree = "<group>"; };
 		DE137B872A6E1A6D00F04665 /* Kiosk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Kiosk; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE137B8A2A6E1A6D00F04665 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		DE137B912A6E200A00F04665 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
@@ -69,9 +67,8 @@
 			children = (
 				DE137B8A2A6E1A6D00F04665 /* main.swift */,
 				DE137B912A6E200A00F04665 /* model.swift */,
-				3361847F2A6E5AE7005C8CB4 /* Drink.swift */,
-				336184832A6E8AEB005C8CB4 /* Shake.swift */,
-				336184812A6E5B49005C8CB4 /* FiveGuysDrinks.swift */,
+				3361847F2A6E5AE7005C8CB4 /* Product.swift */,
+				336184812A6E5B49005C8CB4 /* FiveGuysManager.swift */,
 				DEEF629E2A6E57D100891228 /* burger.swift */,
 			);
 			path = Kiosk;
@@ -137,9 +134,8 @@
 			files = (
 				DE137B922A6E200A00F04665 /* model.swift in Sources */,
 				DEEF629F2A6E57D100891228 /* burger.swift in Sources */,
-				336184842A6E8AEB005C8CB4 /* Shake.swift in Sources */,
-				336184822A6E5B49005C8CB4 /* FiveGuysDrinks.swift in Sources */,
-				336184802A6E5AE7005C8CB4 /* Drink.swift in Sources */,
+				336184822A6E5B49005C8CB4 /* FiveGuysManager.swift in Sources */,
+				336184802A6E5AE7005C8CB4 /* Product.swift in Sources */,
 				DE137B8B2A6E1A6D00F04665 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

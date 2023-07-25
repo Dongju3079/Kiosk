@@ -14,6 +14,7 @@ final class PickMenus {
 class Menu {
     var name: String
     var price: Double
+    var sizeUp: Size = .nomal
     
     init(_ name: String, _ price: Double) {
         self.name = name
