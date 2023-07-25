@@ -7,28 +7,57 @@
 
 import Foundation
 
-while true {
-    printHomeKiosk()
+
+func aaa() {
+    print("장바구니 출력")
+}
+
+
+func test() {
+    DispatchQueue.global().asyncAfter(wallDeadline: .now() + 1) {
+        aaa()
+        test()
+    }
+}
+
+
+func mainMenu() {
+    test()
     
-    let userInput = readLine()
-            
-    switch userInput {
-    case "0":
-        print("프로그램을 종료합니다.")
-        exit(0)
-    case "1":
-        orderBurders()
-        break
-    case "2":
-        break
-    case "3":
-        OrderManager().orderDrinks(type: .drink, userInfo: UserInfo())
-        break
-    case "4":
-        OrderManager().orderDrinks(type: .shake, userInfo: UserInfo())
-        break
-    default:
-        print("올바른 메뉴를 입력해주세요.")
+    while true {
+        printHomeKiosk()
+        
+        let userInput = readLine()
+                
+        switch userInput {
+        case "0":
+            print("프로그램을 종료합니다.")
+            exit(0)
+        case "1":
+            orderBurders()
+            break
+        case "2":
+            break
+        case "3":
+            OrderManager().orderDrinks(type: .drink, userInfo: UserInfo()) { result in
+                if result == true {
+                    print("here")
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    print("3초 뒤 실행")
+                }
+            }
+            break
+        case "4":
+//            OrderManager().orderDrinks(type: .shake, userInfo: UserInfo()) {
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                    print("3초 뒤 실행")
+//                }
+//            }
+            break
+        default:
+            print("올바른 메뉴를 입력해주세요.")
+        }
     }
 }
 
@@ -45,3 +74,5 @@ func printHomeKiosk() {
     
     """)
 }
+
+mainMenu()
