@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52466EED2A6F708800ED47F6 /* hotdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52466EEC2A6F708800ED47F6 /* hotdog.swift */; };
 		6315F8F52A6E5BA7006DEA5C /* sandwiches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315F8F42A6E5BA7006DEA5C /* sandwiches.swift */; };
 		DE137B8B2A6E1A6D00F04665 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE137B8A2A6E1A6D00F04665 /* main.swift */; };
 		DE137B922A6E200A00F04665 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE137B912A6E200A00F04665 /* model.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		52466EEC2A6F708800ED47F6 /* hotdog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hotdog.swift; sourceTree = "<group>"; };
 		6315F8F42A6E5BA7006DEA5C /* sandwiches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sandwiches.swift; sourceTree = "<group>"; };
 		DE137B872A6E1A6D00F04665 /* Kiosk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Kiosk; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE137B8A2A6E1A6D00F04665 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				DE137B912A6E200A00F04665 /* model.swift */,
 				DEEF629E2A6E57D100891228 /* burger.swift */,
 				6315F8F42A6E5BA7006DEA5C /* sandwiches.swift */,
+				52466EEC2A6F708800ED47F6 /* hotdog.swift */,
 			);
 			path = Kiosk;
 			sourceTree = "<group>";
@@ -130,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6315F8F52A6E5BA7006DEA5C /* sandwiches.swift in Sources */,
+				52466EED2A6F708800ED47F6 /* hotdog.swift in Sources */,
 				DE137B922A6E200A00F04665 /* model.swift in Sources */,
 				DEEF629F2A6E57D100891228 /* burger.swift in Sources */,
 				DE137B8B2A6E1A6D00F04665 /* main.swift in Sources */,
@@ -255,10 +259,11 @@
 		DE137B8F2A6E1A6D00F04665 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TR9T3ND2HH;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -266,10 +271,11 @@
 		DE137B902A6E1A6D00F04665 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TR9T3ND2HH;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
