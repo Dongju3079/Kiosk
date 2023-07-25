@@ -28,6 +28,7 @@ while true {
             print($0.price)
         }
         print("-----> drinkOrder: \(drinkOrder)")
+        print("-----> pickMenus: \(PickMenus.pickedMenus)")
         break
     case "4":
         break
