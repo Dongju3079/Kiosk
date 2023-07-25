@@ -24,9 +24,27 @@ class Burger: Menu {
     }
 }
 
-class Dogs: Menu {
+class Hotdog: Menu {
     
 }
 class Sandwiches: Menu {
+    
+}
+
+// MARK: - User
+
+class UserInfo {
+    
+    var money: Double = 0
+    
+    var poket: [Menu] = []
+    
+    func updatePoket(food: Menu) {
+        self.poket.append(food)
+    }
+    
+    func updateMoney() {
+        money = floor(Double.random(in: 10000...30000))
+    }
     
 }

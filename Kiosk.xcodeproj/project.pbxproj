@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		52466EED2A6F708800ED47F6 /* hotdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52466EEC2A6F708800ED47F6 /* hotdog.swift */; };
+		52466EEF2A6F72BC00ED47F6 /* noticeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52466EEE2A6F72BC00ED47F6 /* noticeText.swift */; };
 		6315F8F52A6E5BA7006DEA5C /* sandwiches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315F8F42A6E5BA7006DEA5C /* sandwiches.swift */; };
 		DE137B8B2A6E1A6D00F04665 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE137B8A2A6E1A6D00F04665 /* main.swift */; };
 		DE137B922A6E200A00F04665 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE137B912A6E200A00F04665 /* model.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		52466EEC2A6F708800ED47F6 /* hotdog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hotdog.swift; sourceTree = "<group>"; };
+		52466EEE2A6F72BC00ED47F6 /* noticeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noticeText.swift; sourceTree = "<group>"; };
 		6315F8F42A6E5BA7006DEA5C /* sandwiches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sandwiches.swift; sourceTree = "<group>"; };
 		DE137B872A6E1A6D00F04665 /* Kiosk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Kiosk; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE137B8A2A6E1A6D00F04665 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				DEEF629E2A6E57D100891228 /* burger.swift */,
 				6315F8F42A6E5BA7006DEA5C /* sandwiches.swift */,
 				52466EEC2A6F708800ED47F6 /* hotdog.swift */,
+				52466EEE2A6F72BC00ED47F6 /* noticeText.swift */,
 			);
 			path = Kiosk;
 			sourceTree = "<group>";
@@ -134,6 +137,7 @@
 			files = (
 				6315F8F52A6E5BA7006DEA5C /* sandwiches.swift in Sources */,
 				52466EED2A6F708800ED47F6 /* hotdog.swift in Sources */,
+				52466EEF2A6F72BC00ED47F6 /* noticeText.swift in Sources */,
 				DE137B922A6E200A00F04665 /* model.swift in Sources */,
 				DEEF629F2A6E57D100891228 /* burger.swift in Sources */,
 				DE137B8B2A6E1A6D00F04665 /* main.swift in Sources */,
