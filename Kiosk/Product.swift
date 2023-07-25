@@ -16,7 +16,8 @@ enum Size: String {
 enum Product: String, CaseIterable {
     case drink = "드링크"
     case shake = "쉐이크"
-    
+    case fries = "감자튀김"
+    case sizeup = "사이즈 선택"
     
     var name: String { rawValue }
     
@@ -26,6 +27,10 @@ enum Product: String, CaseIterable {
             return Drink.allCases.map { $0.menuName }
         case .shake:
             return Shake.allCases.map { $0.menuName }
+        case .fries:
+            return Fries.allCases.map { $0.menuName }
+        case .sizeup:
+            return Sizeup.allCases.map { $0.menuName }
         }
     }
     
@@ -35,6 +40,10 @@ enum Product: String, CaseIterable {
             return Drink.allCases.map { $0.menuPrice }
         case .shake:
             return Shake.allCases.map { $0.menuPrice }
+        case .fries:
+            return Fries.allCases.map { $0.menuPrice }
+        case .sizeup:
+            return Sizeup.allCases.map { $0.menuPrice }
         }
     }
     
@@ -76,5 +85,40 @@ enum Product: String, CaseIterable {
         var menuName: String { rawValue }
         
         var menuPrice: Double { return 8.9 }
+    }
+    
+    private enum Fries: String, CaseIterable {
+        case peanut = "땅콩기름에 튀긴 파이브가이즈 스타일 프라이즈"
+        case cajun = "케이준 스타일 프라이즈"
+        
+        var menuName: String { rawValue }
+        
+        var menuPrice: Double {
+            switch self {
+            case .peanut:
+                return 6.9
+            case .cajun:
+                return 6.9
+            }
+        }
+    }
+    
+    private enum Sizeup: String, CaseIterable {
+        case little = "Little"
+        case regular = "Regular"
+        case large = "Large"
+        
+        var menuName: String { rawValue }
+        
+        var menuPrice: Double {
+            switch self {
+            case .little:
+                return 0.0
+            case .regular:
+                return 2.0
+            case .large:
+                return 4.0
+            }
+        }
     }
 }

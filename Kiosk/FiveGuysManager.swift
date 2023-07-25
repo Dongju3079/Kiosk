@@ -42,9 +42,73 @@ final class OrderManager {
                 print("뒤로가기를 선택하셨습니다. \n")
                 return
             case (1...drinkList.count):
-                userInfo.updateMenu(data: drinkList[userInput - 1])
-                print("\(drinkList[userInput - 1].name)를 주문하셨습니다. 가격은 \(drinkList[userInput - 1].price)000원 입니다. \n")
-                continue
+//                print("type.name : \(type.name)")
+//                print("type : \(type)")
+                
+                if type.name == "감자튀김" {
+                    
+                    var selectSize: Bool = true
+                    
+                    while selectSize {
+                        
+                        var sizeList: [Menu] = []
+                        
+                        for i in Product.sizeup.productName.indices {
+                            sizeList.append(Menu(Product.sizeup.productName[i], Product.sizeup.productPrice[i]))
+                        }
+                        
+                        print("[ \(Product.sizeup.name) ]")
+                        for (index, size) in sizeList.enumerated() {
+                            print("\(index + 1). \(size.name) | + W \(size.price) |")
+                        }
+                        print("0. 뒤로가기\n")
+                        
+                        guard let sizeInput = readLine(),
+                              let sizeInput = Int(sizeInput) else {
+                            print("올바른 메뉴를 입력해주세요. \n")
+                            continue
+                        }
+                        
+                        if userInfo.pickMenu.isEmpty && userInput == sizeList.count + 1 {
+                            print("올바른 메뉴를 입력해주세요. \n")
+                            continue
+                        }
+                        
+                        switch sizeInput {
+                        case 0:
+                            print("뒤로가기를 선택하셨습니다. \n")
+                            return
+                        case (1...sizeList.count):
+                            print("\(sizeInput)을 선택하셨습니다. \n")
+                            
+                            var sizeupList: [Menu] = []
+                            
+                            var menuSizeName: String
+                            var menuSizePrice: Double
+                            
+                            menuSizeName = type.productName[userInput - 1] + " \(sizeList[sizeInput - 1].name)"
+                            menuSizePrice = type.productPrice[userInput - 1] + sizeList[sizeInput - 1].price
+                            
+                            sizeupList.append(Menu(menuSizeName, menuSizePrice))
+                            
+                            // 사용자
+//                            userInfo.updateMenu(data: sizeupList[userInput - 1])
+                            print("---------- test ----------")
+                            print("\(sizeupList[sizeupList.count - 1].name)를 주문하셨습니다. 가격은 \(sizeupList[sizeupList.count - 1].price)000원 입니다. \n")
+                            
+                            selectSize = false
+                            continue
+                            
+                        default:
+                            print("올바른 메뉴를 입력해주세요. \n")
+                        }
+                    }
+                } else {
+                    userInfo.updateMenu(data: drinkList[userInput - 1])
+                    print("\(drinkList[userInput - 1].name)를 주문하셨습니다. 가격은 \(drinkList[userInput - 1].price)000원 입니다. \n")
+                    continue
+                }
+                
             case (drinkList.count + 1): // 삭제
                 printPickedMenu(pickMenus: userInfo.pickMenu)
                 guard let userInput = readLine(),
@@ -59,6 +123,10 @@ final class OrderManager {
                 print("올바른 메뉴를 입력해주세요. \n")
             }
         }
+    }
+    
+    func sizeCheck() {
+        
     }
 }
 
