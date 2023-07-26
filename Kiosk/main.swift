@@ -1,10 +1,3 @@
-//
-//  main.swift
-//  Kiosk
-//
-//  Created by daelee on 2023/07/24.
-//
-
 import Foundation
 
 while true {
@@ -17,9 +10,10 @@ while true {
         print("프로그램을 종료합니다.")
         exit(0)
     case "1":
-        orderBurders()
+        OrderManager().orderDrinks(type: .burgers, userInfo: UserInfo())
         break
     case "2":
+        OrderManager().orderDrinks(type: .hotdogs, userInfo: UserInfo())
         break
     case "3":
         OrderManager().orderDrinks(type: .drink, userInfo: UserInfo())
@@ -27,6 +21,11 @@ while true {
     case "4":
         OrderManager().orderDrinks(type: .shake, userInfo: UserInfo())
         break
+    case "5":
+        OrderManager().orderDrinks(type: .sandwiches, userInfo: UserInfo())
+        break
+    case "8":
+        ShoppingCart().printShoppingCart(payItem: )
     default:
         print("올바른 메뉴를 입력해주세요.")
     }
@@ -40,7 +39,9 @@ func printHomeKiosk() {
     1. Burgers         | 비프 통살을 다져만든 버거
     2. Hotdog          | 매장에서 신선하게 만드는 핫도그
     3. Drinks          | 매장에서 직접 만드는 음료
-    4. Sandwiches      | 엄마손 샌드위치
+    4. Milkshakes      | Five Jays만의 특별한 밀크셰이크
+    5. Sandwiches      | 엄마손 샌드위치
+    8. 장바구니          | 주문한 상품을 확인
     0. 종료             | 프로그램 종료
     
     """)

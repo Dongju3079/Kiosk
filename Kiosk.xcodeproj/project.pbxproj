@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		336184802A6E5AE7005C8CB4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361847F2A6E5AE7005C8CB4 /* Product.swift */; };
 		336184822A6E5B49005C8CB4 /* FiveGuysManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336184812A6E5B49005C8CB4 /* FiveGuysManager.swift */; };
+		6315F8FF2A6FAADC006DEA5C /* shoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315F8FE2A6FAADC006DEA5C /* shoppingCart.swift */; };
 		DE137B8B2A6E1A6D00F04665 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE137B8A2A6E1A6D00F04665 /* main.swift */; };
 		DE137B922A6E200A00F04665 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE137B912A6E200A00F04665 /* model.swift */; };
 		DEEF629F2A6E57D100891228 /* burger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEF629E2A6E57D100891228 /* burger.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		3361847F2A6E5AE7005C8CB4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		336184812A6E5B49005C8CB4 /* FiveGuysManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveGuysManager.swift; sourceTree = "<group>"; };
+		6315F8FE2A6FAADC006DEA5C /* shoppingCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shoppingCart.swift; sourceTree = "<group>"; };
 		DE137B872A6E1A6D00F04665 /* Kiosk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Kiosk; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE137B8A2A6E1A6D00F04665 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		DE137B912A6E200A00F04665 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				3361847F2A6E5AE7005C8CB4 /* Product.swift */,
 				336184812A6E5B49005C8CB4 /* FiveGuysManager.swift */,
 				DEEF629E2A6E57D100891228 /* burger.swift */,
+				6315F8FE2A6FAADC006DEA5C /* shoppingCart.swift */,
 			);
 			path = Kiosk;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE137B922A6E200A00F04665 /* model.swift in Sources */,
+				6315F8FF2A6FAADC006DEA5C /* shoppingCart.swift in Sources */,
 				DEEF629F2A6E57D100891228 /* burger.swift in Sources */,
 				336184822A6E5B49005C8CB4 /* FiveGuysManager.swift in Sources */,
 				336184802A6E5AE7005C8CB4 /* Product.swift in Sources */,
@@ -260,7 +264,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HJ943JVKX7;
+				DEVELOPMENT_TEAM = TR9T3ND2HH;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -271,7 +275,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HJ943JVKX7;
+				DEVELOPMENT_TEAM = TR9T3ND2HH;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
