@@ -12,7 +12,6 @@
 		525AD5DF2A70EE91001B2750 /* payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525AD5DE2A70EE91001B2750 /* payment.swift */; };
 		DE137B8B2A6E1A6D00F04665 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE137B8A2A6E1A6D00F04665 /* main.swift */; };
 		DE137B922A6E200A00F04665 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE137B912A6E200A00F04665 /* model.swift */; };
-		DEEF629F2A6E57D100891228 /* burger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEF629E2A6E57D100891228 /* burger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,7 +33,6 @@
 		DE137B872A6E1A6D00F04665 /* Kiosk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Kiosk; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE137B8A2A6E1A6D00F04665 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		DE137B912A6E200A00F04665 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
-		DEEF629E2A6E57D100891228 /* burger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = burger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +69,6 @@
 				DE137B912A6E200A00F04665 /* model.swift */,
 				3361847F2A6E5AE7005C8CB4 /* Product.swift */,
 				336184812A6E5B49005C8CB4 /* FiveGuysManager.swift */,
-				DEEF629E2A6E57D100891228 /* burger.swift */,
 				525AD5DE2A70EE91001B2750 /* payment.swift */,
 			);
 			path = Kiosk;
@@ -136,7 +133,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE137B922A6E200A00F04665 /* model.swift in Sources */,
-				DEEF629F2A6E57D100891228 /* burger.swift in Sources */,
 				525AD5DF2A70EE91001B2750 /* payment.swift in Sources */,
 				336184822A6E5B49005C8CB4 /* FiveGuysManager.swift in Sources */,
 				336184802A6E5AE7005C8CB4 /* Product.swift in Sources */,

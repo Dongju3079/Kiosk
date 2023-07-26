@@ -21,9 +21,7 @@ enum MainName: String, CaseIterable {
     case drink = "DRINK"
     case shake = "SHAKE"
     
-    
     var name: String { rawValue }
-    
     
     var menuPrice: String {
         switch self {
@@ -41,7 +39,6 @@ enum MainName: String, CaseIterable {
             return "매장에서 직접 만드는 쉐이크"
         }
     }
-    
 }
 
 enum Product: String {
