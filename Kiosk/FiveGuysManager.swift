@@ -16,7 +16,7 @@ final class UserInfo {
 }
 
 final class OrderManager {
-    func orderDrinks(type: Product, userInfo: UserInfo, completion: @escaping (Bool) -> Void) {
+    func orderDrinks(type: Product, userInfo: UserInfo, completion: () -> Void) {
         var drinkList: [Menu] = []
         
         for i in type.productName.indices {
@@ -40,7 +40,7 @@ final class OrderManager {
             switch userInput {
             case 0:
                 print("뒤로가기를 선택하셨습니다. \n")
-                completion(true)
+                completion()
                 return
             case (1...drinkList.count):
                 userInfo.updateMenu(data: drinkList[userInput - 1])
