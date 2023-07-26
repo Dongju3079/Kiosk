@@ -16,7 +16,7 @@ enum Size: String {
 enum Product: String, CaseIterable {
     case drink = "드링크"
     case shake = "쉐이크"
-    case burger = "BURGER"
+    case burger = "버거"
     case fries = "감자튀김"
     case sizeup = "사이즈 선택"
     
@@ -45,6 +45,10 @@ enum Product: String, CaseIterable {
             return Shake.allCases.map { $0.menuPrice }
         case .burger:
             return Burger.allCases.map { $0.menuPrice }
+        case .fries:
+            return Fries.allCases.map { $0.menuPrice }
+        case .sizeup:
+            return Sizeup.allCases.map { $0.menuPrice }
         }
     }
     
@@ -67,10 +71,7 @@ enum Product: String, CaseIterable {
             case .baconCheeseburger:
                 return 17.4
             }
-        case .fries:
-            return Fries.allCases.map { $0.menuPrice }
-        case .sizeup:
-            return Sizeup.allCases.map { $0.menuPrice }
+        
         }
     }
     

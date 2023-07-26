@@ -44,7 +44,7 @@ final class OrderManager {
                 return
             case (1...drinkList.count):
                 // 감자 튀김인 경우 size를 선택해야 함으로
-                if type.name == "감자튀김" {
+                if type.name == "감자튀김" || type.name == "버거" {
                     sizeCheck(type: type, userInfo: userInfo, userInput: userInput)
                 } else {
                     userInfo.updateMenu(data: drinkList[userInput - 1])
@@ -77,7 +77,7 @@ final class OrderManager {
             for i in Product.sizeup.productName.indices { // 열거형으로 선언해 놓은 Product에 접근하여 sizeup에 저장된 목록을 sizeList에 저장.
                 sizeList.append(Menu(Product.sizeup.productName[i], Product.sizeup.productPrice[i]))
             }
-            if(type.name == "햄버거"){
+            if(type.name == "버거"){
                 sizeList.remove(at: sizeList.count - 1)
             }
 
