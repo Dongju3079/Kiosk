@@ -23,6 +23,9 @@ final class OrderManager {
             drinkList.append(Menu(type.productName[i], type.productPrice[i]))
         }
         
+        // 영수증 표시 테스트
+        PrintReceipt().printReceipt(payItem: drinkList, remainMoney: 10000)
+        
         while true {
             printDrinksMenu(type: type, drinkList, pickMenus: userInfo.pickMenu)
             
