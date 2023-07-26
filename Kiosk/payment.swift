@@ -7,116 +7,108 @@
 
 import Foundation
 
+// MARK: - 장바구니
+
 class Payment {
     
     let orderManager = OrderManager()
     
     var loop = true
     
-    func pay(userInfo: UserInfo) {
-        // 결재 or 장바구니 제거 or 돌아가기
-        
-     OUTER: while loop {
-         
-            var amount = UserInfo.poket.reduce(0) { $0 + $1.price }
-            
-            print("1. 결재 \n2. 장바구니 \n3. 메인메뉴")
-            
-            let text = readLine()
-            
-            switch text {
-            case "1":
-                pay(userInfo: userInfo, amount: amount)
-//                guard UserInfo.poket.isEmpty != true else {
-//                    print("장바구니가 비었습니다.")
-//                    return
-//                }
-//                if userInfo.money > amount {
-//                    userInfo.money -= amount
-//                    print("결재가 완료됐습니다.")
-//                    print("잔액 \(floor(userInfo.money * 1000))")
-//                    userInfo.emptyPoket()
-//                    return
-//                } else { print("\(floor(amount - userInfo.money) * 1000)원이 부족합니다, 장바구니를 비워주세요.")
-//                    continue
-//                }
-            case "2":
-                guard UserInfo.poket.isEmpty != true else {
-                    print("장바구니가 비었습니다.")
-                    return
-                }
-                
-                while true {
-                print("장바구니 항목")
-                for food in UserInfo.poket {
-                    print("\(food.name) | W \(food.price) |")
-                }
-                print("결제 금액 :\(floor(amount * 1000))")
-                print("\n1. 장바구니에서 제거하기 \n2. 결재하기 \n3. 메인화면으로 돌아가기")
-                let text = readLine()
-                switch text {
-                case "1":
-                INTER: while true {
-                    orderManager.printPickedMenu(pickMenus: UserInfo.poket)
-                    print("결제 금액 :\(floor(amount * 1000))")
-                    
-                        guard let text = readLine(),
-                              let index = Int(text) else { continue }
-                        switch index {
-                        case 1...UserInfo.poket.count:
-                            userInfo.removePoket(index: index - 1)
-                            amount -= UserInfo.poket[index - 1].price
-                            continue
-                        case 0:
-                            break INTER
-                        default: print("올바른 메뉴를 입력해주세요. \n")
-                        }
-                    }
-                case "2":
-                    guard UserInfo.poket.isEmpty != true else {
-                        print("장바구니가 비었습니다.")
-                        return
-                    }
-                    if userInfo.money > amount {
-                        userInfo.money -= amount
-                        print("결재가 완료됐습니다.")
-                        print("잔액 \(floor(userInfo.money * 1000))")
-                        userInfo.emptyPoket()
-                        return
-                    } else {
-                        print("돈부족해")
-                        continue
-                    }
-                case "3":
-                    break OUTER
-                default:
-                    continue
-                }
-            }
-            case "3":
-                return
-                // 삭제 and 결재
-            default: print("올바른 메뉴를 입력해주세요. \n")
-                continue
-            }
-        }
-        
-    }
+    lazy var mainAmount = UserInfo.poket.reduce(0) { $0 + $1.price }
     
-    func pay(userInfo: UserInfo, amount: Double) {
-            guard UserInfo.poket.isEmpty != true else {
-                print("장바구니가 비었습니다.")
-                loop = false
-                return
-            }
-            if userInfo.money > amount {
-                userInfo.money -= amount
-                print("결재가 완료됐습니다.")
-                print("잔액 \(floor(userInfo.money * 1000))")
-                userInfo.emptyPoket()
-                return
-            } else { print("\(floor(amount - userInfo.money) * 1000)원이 부족합니다, 장바구니를 비워주세요.")
-                return
-            }
+    deinit  {
+        print("메인화면으로 돌아갑니다.")
     }
 }
+
+// MARK: - 기능확장
+
+extension Payment {
+    
+    // 장바구니 사이클
+    func basket(userInfo: UserInfo) {
+        printList()
+        
+        while true {
+            guard UserInfo.poket.isEmpty != true else {
+                print("장바구니가 비었습니다.")
+                loop.toggle()
+                return
+            }
+        
+            print("""
+            소요 금액 : \((mainAmount * 1000))
+            1. 장바구니 수정 \n2. 결재 \n3. 메인메뉴
+            """)
+         
+            let text = readLine()
+            switch text {
+            case "1":
+                editBasket(user: userInfo)
+            case "2":
+                payment(user: userInfo)
+            case "3":
+                loop.toggle()
+                return
+            default:
+                print("올바른 메뉴를 입력해주세요. \n")
+            }
+        }
+    }
+    
+    // 항목 프린트
+    func printList() {
+        print("장바구니 항목")
+        for food in UserInfo.poket {
+            print("\(food.name) | W \(food.price) |")
+        }
+    }
+    
+    // 장바구니 체크
+    func checkBasket() {
+        guard UserInfo.poket.isEmpty != true else {
+            print("장바구니가 비었습니다.")
+            loop.toggle()
+            return
+        }
+    }
+    
+    // 장바구니 수정
+    func editBasket(user: UserInfo) {
+        while true {
+            guard UserInfo.poket.isEmpty != true else {
+                print("장바구니가 비었습니다.")
+                return
+            }
+            
+            orderManager.printPickedMenu(pickMenus: UserInfo.poket)
+            guard let text = readLine(),
+                  let index = Int(text) else { continue }
+            switch index {
+            case 0:
+                return
+            case 1...UserInfo.poket.count:
+                mainAmount -= UserInfo.poket[index - 1].price
+                user.removePoket(index: index - 1)
+            default: print("올바른 메뉴를 입력해주세요. \n")
+            }
+        }
+    }
+    
+    // 결재하기
+    func payment(user: UserInfo) {
+        if user.money > mainAmount {
+            user.money -= mainAmount
+            mainAmount = 0
+            print("결재가 완료됐습니다.")
+            print("잔액 \((user.money * 1000))")
+            user.emptyPoket()
+            loop.toggle()
+            return
+        } else {
+            print("\((mainAmount - user.money) * 1000)원이 부족합니다, 장바구니를 비워주세요.")
+        }
+    }
+}
+

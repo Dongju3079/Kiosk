@@ -13,10 +13,10 @@ final class PickMenus {
 
 class Menu {
     var name: String
-    var price: Double
+    var price: Decimal
     var sizeUp: Size = .nomal
     
-    init(_ name: String, _ price: Double) {
+    init(_ name: String, _ price: Decimal) {
         self.name = name
         self.price = price
     }
@@ -24,22 +24,16 @@ class Menu {
 
 class Burger: Menu {
     
-    func orderSmallSize() {
-        //
-    }
 }
-
-class Dogs: Menu {
-    
-}
-
 // MARK: - User
 
 class UserInfo {
     
     static var poket: [Menu] = []
     
-    var money: Double = 0
+    var money: Decimal = 0
+    
+    lazy var firstMoney = Double.random(in: 30...50)
     
     func updatePoket(food: Menu) {
         Self.poket.append(food)
@@ -50,7 +44,8 @@ class UserInfo {
     }
     
     func updateMoney() {
-        money = floor(Double.random(in: 20...50))
+        let num = round(firstMoney * 10) / 10
+        money = Decimal(num)
     }
     
     func emptyPoket() {

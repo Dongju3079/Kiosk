@@ -1,17 +1,8 @@
-//
-//  main.swift
-//  Kiosk
-//
-//  Created by daelee on 2023/07/24.
-//
-
 import Foundation
 
 class Kiosk {
     
     var test = MainName.allCases
-    
-    let payment = Payment()
     
     let user = UserInfo()
     
@@ -28,27 +19,43 @@ class Kiosk {
             case "0":
                 print("프로그램을 종료합니다.")
                 exit(0)
+                
             case "1":
                 // 햄버거
                 break
+                
             case "2":
-                OrderManager().orderDrinks(type: .hotdog, userInfo: user)
+                OrderManager().orderFoods(type: .hotdog, userInfo: user)
                 break
+                
             case "3":
                 // 샌드위치
                 break
+                
             case "4":
                 // 감자튀김
                 break
+                
             case "5":
-                OrderManager().orderDrinks(type: .drink, userInfo: user)
+                OrderManager().orderFoods(type: .drink, userInfo: user)
                 break
+                
             case "6":
-                OrderManager().orderDrinks(type: .shake, userInfo: user)
+                OrderManager().orderFoods(type: .shake, userInfo: user)
                 break
+                
             case "7":
-                payment.pay(userInfo: user)
+                guard UserInfo.poket.isEmpty != true else {
+                    print("장바구니가 비었습니다.")
+                    continue
+                }
+                
+                var payment: Payment? = Payment()
+                
+                guard let test = payment else { return }
+                test.basket(userInfo: user)
 //                OrderManager().pay(userInfo: user)
+                payment = nil
                 
             default:
                 print("올바른 메뉴를 입력해주세요.")
@@ -65,17 +72,11 @@ class Kiosk {
         print("0. 종료하기 \n")
         
         print("""
-        나의 잔고: \(floor(user.money * 1000))
+        나의 잔고: \((user.money * 1000))
         장바구니: \(UserInfo.poket.map({ $0.name }).joined(separator: " ,"))
-        소요금액: \(floor(UserInfo.poket.reduce(0) { $0 + $1.price }) * 1000)
+        소요금액: \((UserInfo.poket.reduce(0) { $0 + $1.price }) * 1000)
         """)
     }
-    
-    
-    
-   
-    
-    
 }
 
 var user = Kiosk()
