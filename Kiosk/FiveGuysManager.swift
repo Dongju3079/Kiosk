@@ -6,25 +6,20 @@
 //
 
 import Foundation
-
+// MARK: - 메뉴선택
 final class OrderManager {
-    
-    func orderFoods(type: Product, userInfo: UserInfo) {
-        var drinkList: [Menu] = []
-        
-        for i in type.productName.indices {
-            drinkList.append(Menu(type.productName[i], (type.productPrice[i])))
-        }
+
+    func orderFoods(foods: [Food], type: Product, userInfo: UserInfo) {
         
         while true {
-            printDrinksMenu(type: type, drinkList, pickMenus: UserInfo.poket)
+            printFoodsMenu(type: type, foodList: foods)
             guard let userInput = readLine(),
                   let userInput = Int(userInput) else {
                 print("올바른 메뉴를 입력해주세요. 가드 \n")
                 continue
             }
-            //
-            if UserInfo.poket.isEmpty && userInput == drinkList.count + 1 {
+            
+            if UserInfo.poket.isEmpty && userInput == foods.count + 1 {
                 print("올바른 메뉴를 입력해주세요. \n")
                 continue
             }
@@ -33,20 +28,20 @@ final class OrderManager {
             case 0:
                 print("뒤로가기를 선택하셨습니다. \n")
                 return
-            case (1...drinkList.count):
-                userInfo.updatePoket(food: drinkList[userInput - 1])
+            case (1...foods.count):
+                userInfo.updatePoket(food: foods[userInput - 1])
                 //print("\(drinkList[userInput - 1].name)를 주문하셨습니다. 가격은 \(drinkList[userInput - 1].price)000원 입니다. \n")
-                print("\(drinkList[userInput - 1].name)가 장바구니에 담겼습니다. \n")
+                print("\(foods[userInput - 1].name)가 장바구니에 담겼습니다. \n")
                 continue
                 
-            case drinkList.count + 1: // 삭제
+            case foods.count + 1: // 삭제
                 
-            INTER:while true {
+          INTER:while true {
                 printPickedMenu(pickMenus: UserInfo.poket)
                 
                 guard UserInfo.poket.isEmpty != true else {
                     print("장바구니가 비었습니다.")
-                    break
+                    break INTER
                 }
                 
                 guard let userInput = readLine(),
@@ -69,22 +64,22 @@ final class OrderManager {
 }
 
 extension OrderManager {
-    func printDrinksMenu(type: Product, _ drinkList: [Menu], pickMenus: [Menu]) {
+    func printFoodsMenu(type: Product, foodList: [Food]) {
+    
         print("[ \(type.name) MENU ]")
-        for (index, drink) in drinkList.enumerated() {
-            print("\(index + 1). \(drink.name) | W \(drink.price) |")
+        for i in 0..<foodList.count {
+            print("\(i + 1). \(foodList[i].name) | W \(foodList[i].price) |")
         }
-        if !pickMenus.isEmpty {
-            // print("====================================")
-            print("\(drinkList.count + 1). 메뉴 취소")
+        if !foodList.isEmpty {
+            print("\(foodList.count + 1). 메뉴 취소")
         }
         print("0. 뒤로가기\n")
     }
     
-    func printPickedMenu(pickMenus: [Menu]) {
+    func printPickedMenu(pickMenus: [Food]) {
         print("취소할 식품을 선택해주세요.")
-        for (index, drink) in pickMenus.enumerated() {
-            print("\(index + 1). \(drink.name) | W \(drink.price) |")
+        for i in 0..<pickMenus.count {
+            print("\(i + 1). \(pickMenus[i].name) | W \(pickMenus[i].price) |")
         }
         print("0. 뒤로가기\n")
     }
