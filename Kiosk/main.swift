@@ -20,6 +20,7 @@ while true {
         OrderManager().orderDrinks(type: .burger, userInfo: UserInfo())
         break
     case "2":
+        OrderManager().orderDrinks(type: .fries, userInfo: UserInfo())
         break
     case "3":
         OrderManager().orderDrinks(type: .drink, userInfo: UserInfo())
