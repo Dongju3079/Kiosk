@@ -17,7 +17,7 @@ while true {
         print("프로그램을 종료합니다.")
         exit(0)
     case "1":
-        orderBurders()
+        OrderManager().orderDrinks(type: .burger, userInfo: UserInfo())
         break
     case "2":
         break

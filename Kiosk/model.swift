@@ -21,14 +21,3 @@ class Menu {
         self.price = price
     }
 }
-
-class Burger: Menu {
-    
-    func orderSmallSize() {
-        //
-    }
-}
-
-class Dogs: Menu {
-    
-}

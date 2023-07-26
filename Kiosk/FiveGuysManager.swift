@@ -16,6 +16,7 @@ final class UserInfo {
 }
 
 final class OrderManager {
+    
     func orderDrinks(type: Product, userInfo: UserInfo) {
         var drinkList: [Menu] = []
         
