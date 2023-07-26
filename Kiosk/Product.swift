@@ -96,9 +96,9 @@ enum Product: String, CaseIterable {
         var menuPrice: Double {
             switch self {
             case .peanut:
-                return 6.9
+                return 8.9
             case .cajun:
-                return 6.9
+                return 8.9
             }
         }
     }
@@ -113,11 +113,11 @@ enum Product: String, CaseIterable {
         var menuPrice: Double {
             switch self {
             case .little:
-                return 0.0
+                return -2.0
             case .regular:
-                return 2.0
+                return 0.0
             case .large:
-                return 4.0
+                return 2.0
             }
         }
     }
