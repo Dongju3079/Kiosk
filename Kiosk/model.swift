@@ -32,3 +32,29 @@ class Burger: Menu {
 class Dogs: Menu {
     
 }
+
+// MARK: - User
+
+class UserInfo {
+    
+    static var poket: [Menu] = []
+    
+    var money: Double = 0
+    
+    func updatePoket(food: Menu) {
+        Self.poket.append(food)
+    }
+    
+    func removePoket(index: Int) {
+        Self.poket.remove(at: index)
+    }
+    
+    func updateMoney() {
+        money = floor(Double.random(in: 20...50))
+    }
+    
+    func emptyPoket() {
+        Self.poket = []
+    }
+    
+}
