@@ -7,10 +7,7 @@
 
 import Foundation
 
-final class PickMenus {
-    static var pickedMenus: [Menu] = []
-}
-
+// MARK: - 메뉴리스트
 class Menu {
     var name: String
     var price: Decimal
@@ -23,13 +20,9 @@ class Menu {
 }
 
 // MARK: - User
-
 class UserInfo {
-    
     static var poket: [Menu] = []
-    
     var money: Decimal = 0
-    
     lazy var firstMoney = Double.random(in: 30...50)
     
     func updatePoket(food: Menu) {
@@ -48,5 +41,15 @@ class UserInfo {
     func emptyPoket() {
         Self.poket = []
     }
+}
+
+class Receipt: Menu {
+    var count: Int
+    var priceSum: Double
     
+    init(name: String, price: Decimal, count: Int, priceSum: Double) {
+        self.count = count
+        self.priceSum = priceSum
+        super.init(name, price)
+    }
 }

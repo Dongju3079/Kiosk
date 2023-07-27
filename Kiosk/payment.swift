@@ -9,12 +9,20 @@ import Foundation
 
 // MARK: - 장바구니
 
+func compareTime() -> Bool {
+    let calendar = Calendar.current
+    let now = Date()
+    let components = calendar.dateComponents([.hour, .minute], from: now)
+    if let hour = components.hour, let minute = components.minute {
+        // 현재 시간이 오후 11시부터 11시 30분 사이인지 확인
+        if hour == 11 && minute >= 30 && minute <= 59 { return true }
+    }
+    return false
+}
+
 class Payment {
-    
     let orderManager = OrderManager()
-    
     var loop = true
-    
     lazy var mainAmount = UserInfo.poket.reduce(0) { $0 + $1.price }
     
     deinit  {
@@ -22,10 +30,7 @@ class Payment {
     }
 }
 
-// MARK: - 기능확장
-
 extension Payment {
-    
     // 장바구니 사이클
     func basket(userInfo: UserInfo) {
         printList()
@@ -47,7 +52,10 @@ extension Payment {
             case "1":
                 editBasket(user: userInfo)
             case "2":
-                payment(user: userInfo)
+                if !compareTime() {
+                    payment(user: userInfo)
+                    
+                } else { print("❗️현재 은행 점검 시간입니다.") }
             case "3":
                 loop.toggle()
                 return
