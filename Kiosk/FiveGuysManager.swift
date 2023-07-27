@@ -89,7 +89,7 @@ extension OrderManager {
         print("0. 뒤로가기\n")
     }
     
-    func printPickedMenu(pickMenus: [Food]) {
+    func printPickedMenu(pickMenus: [Menu]) {
         print("취소할 식품을 선택해주세요.")
         for i in 0..<pickMenus.count {
             print("\(i + 1). \(pickMenus[i].name) | W \(pickMenus[i].price) |")
