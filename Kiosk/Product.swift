@@ -61,10 +61,6 @@ enum Product: String, CaseIterable {
         case cheeseburger = "치즈 버거"
         case baconburger = "베이컨 버거"
         case baconcheeseburger = "베이컨 치즈 버거"
-        case l_hamburger = "리틀 햄버거"
-        case l_cheeseburger = "리틀 치즈 버거"
-        case l_baconburger = "리틀 베이컨 버거"
-        case l_baconcheeseburger = "리틀 베이컨 치즈 버거"
         
         var menuName: String { rawValue }
         
@@ -78,14 +74,6 @@ enum Product: String, CaseIterable {
                 return 15.9
             case .baconcheeseburger:
                 return 17.4
-            case .l_hamburger:
-                return 9.9
-            case .l_cheeseburger:
-                return 11.4
-            case .l_baconburger:
-                return 12.4
-            case .l_baconcheeseburger:
-                return 13.9
             }
         }
     }

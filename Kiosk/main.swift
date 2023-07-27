@@ -10,22 +10,22 @@ while true {
         print("프로그램을 종료합니다.")
         exit(0)
     case "1":
-        OrderManager().orderDrinks(type: .burgers, userInfo: UserInfo())
+        OrderManager().orderFoods(type: .burgers, userInfo: UserInfo())
         break
     case "2":
-        OrderManager().orderDrinks(type: .hotdogs, userInfo: UserInfo())
+        OrderManager().orderFoods(type: .hotdogs, userInfo: UserInfo())
         break
     case "3":
-        OrderManager().orderDrinks(type: .drink, userInfo: UserInfo())
+        OrderManager().orderFoods(type: .drink, userInfo: UserInfo())
         break
     case "4":
-        OrderManager().orderDrinks(type: .shake, userInfo: UserInfo())
+        OrderManager().orderFoods(type: .shake, userInfo: UserInfo())
         break
     case "5":
-        OrderManager().orderDrinks(type: .sandwiches, userInfo: UserInfo())
+        OrderManager().orderFoods(type: .sandwiches, userInfo: UserInfo())
         break
     case "6":
-        OrderManager().orderDrinks(type: .fries, userInfo: UserInfo())
+        OrderManager().orderFoods(type: .fries, userInfo: UserInfo())
         break
     case "7":
         ShoppingCart().printShoppingCart(payItem: [])

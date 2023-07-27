@@ -9,20 +9,23 @@ final class UserInfo {
 }
 
 final class OrderManager {
-    func orderDrinks(type: Product, userInfo: UserInfo) {
-        var drinkList: [Menu] = []
+    func orderFoods(type: Product, userInfo: UserInfo) {
         
-        for i in type.productName.indices {
-            drinkList.append(Menu(type.productName[i], type.productPrice[i]))
+    var shoppingList: [Menu] = [] // 이제 여기에 유저가 선택한 상품을 담아야 하는데...
+    
+//    for food in type.productName.indices {
+//        shoppingList.append(Menu(type.productName[i], type.productPrice[i]))
+//    }
+        
+    func shoppingList() {
+      print("장바구니 항목")
+        for (index, food) in shoppingList.enumerated() {
+            print("\(index + 1). \(food.name) | W \(food.price)")
         }
-        
-        // 임의로 배열 만들어 장바구니에 담는 테스트중
-        // ShoppingCart().printShoppingCart(payItem: drinkList)
-        // 중복제거하여 수량을 나타내는 기능도 필요
-        // 항목별로 나누어서 표시하는 기능도 필요
+    }
 
         while true {
-            printDrinksMenu(type: type, drinkList, pickMenus: userInfo.pickMenu)
+            printDrinksMenu(type: type, shoppingList, pickMenus: userInfo.pickMenu)
             
             guard let userInput = readLine(),
                   let userInput = Int(userInput) else {
@@ -30,7 +33,7 @@ final class OrderManager {
                 continue
             }
             
-            if userInfo.pickMenu.isEmpty && userInput == drinkList.count + 1 {
+            if userInfo.pickMenu.isEmpty && userInput == shoppingList.count + 1 {
                 print("올바른 메뉴를 입력해주세요. \n")
                 continue
             }
@@ -39,11 +42,18 @@ final class OrderManager {
             case 0:
                 print("뒤로가기를 선택하셨습니다. \n")
                 return
-            case (1...drinkList.count):
-                userInfo.updateMenu(data: drinkList[userInput - 1])
-                print("\(drinkList[userInput - 1].name)를 주문하셨습니다. 가격은 \(drinkList[userInput - 1].price)00원 입니다. \n")
+            case (1..<7):
+                userInfo.updateMenu(data: shoppingList[userInput - 1])
+                print("\(shoppingList[userInput - 1].name)를 주문하셨습니다. 가격은 \(shoppingList[userInput - 1].price)00원 입니다. \n")
                 continue
-            case (drinkList.count + 1): // 삭제
+            case 7:
+                ShoppingCart().printShoppingCart(payItem: shoppingList)
+                // 임의로 배열 만들어 장바구니에 담는 테스트중
+                // 중복제거하여 수량을 나타내는 기능도 필요
+                // 항목별로 나누어서 표시하는 기능도 필요
+                continue
+                
+            case (shoppingList.count + 1): // 삭제
                 printPickedMenu(pickMenus: userInfo.pickMenu)
                 guard let userInput = readLine(),
                       let userInput = Int(userInput) else {
