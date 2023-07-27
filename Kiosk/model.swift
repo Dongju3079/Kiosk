@@ -7,28 +7,58 @@
 
 import Foundation
 
+// MARK: - 메뉴리스트
 class Menu {
+    
+    var foods: [Food] = []
+    
+    subscript(index: Int) -> Food {
+        return foods[index]
+    }
+}
+
+extension Menu {
+    // 사이즈가 없는
+    func nonSizeFoodListUpdate(_ type: Product) -> [Food] {
+        for i in type.productName.indices {
+            foods.append(NonSize(type.productName[i], type.productPrice[i]))
+        }
+        return foods
+    }
+    
+    // 사이즈가 있는
+    func OnTheSizeFoodListUpdate(_ type: Product) -> [Food] {
+        for i in type.productName.indices {
+            foods.append(OnTheSize(type.productName[i], type.productPrice[i]))
+        }
+        return foods
+    }
+}
+
+// MARK: - 음식종류
+class Food {
     var name: String
     var price: Decimal
-    var sizeUp: Size = .nomal
     
-    init(_ name: String, _ price: Decimal) {
+    init(_ name: String,_ price: Decimal) {
         self.name = name
         self.price = price
     }
 }
 
-// MARK: - User
+class NonSize: Food {
+}
 
+class OnTheSize: Food {
+}
+
+// MARK: - User
 class UserInfo {
-    
-    static var poket: [Menu] = []
-    
+    static var poket: [Food] = []
     var money: Decimal = 0
-    
     lazy var firstMoney = Double.random(in: 30...50)
     
-    func updatePoket(food: Menu) {
+    func updatePoket(food: Food) {
         Self.poket.append(food)
     }
     
