@@ -75,15 +75,27 @@ final class OrderManager {
 
 extension OrderManager {
     func printDrinksMenu(type: Product, _ drinkList: [Menu], pickMenus: [Menu]) {
-        print("[ \(type.name) MENU ]")
+        let totalLength = 40
+        let paddingLength = totalLength - Int(type.rawValue.count) - 10
+        let padding = String(repeating: " ", count: paddingLength / 2)
+        
+        print("")
+        print("*-----------------------------------*")
+        print("|\(padding)\(type) MENU\(padding)|")
+        print("*-----------------------------------*")
         for (index, drink) in drinkList.enumerated() {
-            print("\(index + 1). \(drink.name) | W \(drink.price) |")
+            let num = String(format: "%2d", index + 1)
+            let menuName = drink.name.padding(toLength: 20, withPad: " ", startingAt: 0)
+            let menuPrice = NSDecimalNumber(decimal: drink.price).doubleValue // double로 형변환
+            let formattedPrice = String(format: "%4g", menuPrice) // g 서식지정자: 소수점 이하 0을 제거
+
+            print("| \(num). \(menuName) | W \(formattedPrice) |")
         }
-        if !pickMenus.isEmpty {
-            // print("====================================")
-            print("\(drinkList.count + 1). 메뉴 취소")
-        }
-        print("0. 뒤로가기\n")
+
+
+        print("*-----------------------------------*")
+        print("|  0. 뒤로가기 ⏪                     |")
+        print("*-----------------------------------*")
     }
     
     func printPickedMenu(pickMenus: [Menu]) {
