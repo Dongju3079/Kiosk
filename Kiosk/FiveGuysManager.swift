@@ -1,10 +1,3 @@
-//
-//  FiveGuysManager.swift
-//  Kiosk
-//
-//  Copyright (c) 2023 z-wook. All right reserved.
-//
-
 import Foundation
 
 final class UserInfo {
@@ -23,6 +16,11 @@ final class OrderManager {
             drinkList.append(Menu(type.productName[i], type.productPrice[i]))
         }
         
+        // 임의로 배열 만들어 장바구니에 담는 테스트중
+        // ShoppingCart().printShoppingCart(payItem: drinkList)
+        // 중복제거하여 수량을 나타내는 기능도 필요
+        // 항목별로 나누어서 표시하는 기능도 필요
+
         while true {
             printDrinksMenu(type: type, drinkList, pickMenus: userInfo.pickMenu)
             
@@ -43,7 +41,7 @@ final class OrderManager {
                 return
             case (1...drinkList.count):
                 userInfo.updateMenu(data: drinkList[userInput - 1])
-                print("\(drinkList[userInput - 1].name)를 주문하셨습니다. 가격은 \(drinkList[userInput - 1].price)000원 입니다. \n")
+                print("\(drinkList[userInput - 1].name)를 주문하셨습니다. 가격은 \(drinkList[userInput - 1].price)00원 입니다. \n")
                 continue
             case (drinkList.count + 1): // 삭제
                 printPickedMenu(pickMenus: userInfo.pickMenu)

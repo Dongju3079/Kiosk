@@ -1,10 +1,3 @@
-//
-//  Product.swift
-//  Kiosk
-//
-//  Copyright (c) 2023 z-wook. All right reserved.
-//
-
 import Foundation
 
 enum Size: String {
@@ -14,7 +7,7 @@ enum Size: String {
 }
 
 enum Product: String, CaseIterable {
-    case burgers = "버거"
+    case burgers = "햄버거"
     case hotdogs = "핫도그"
     case drink = "드링크"
     case shake = "쉐이크"
@@ -30,7 +23,7 @@ enum Product: String, CaseIterable {
         case .burgers:
             return Burger.allCases.map { $0.menuName }
         case .hotdogs:
-            return Dogs.allCases.map { $0.menuName }
+            return Hotdog.allCases.map { $0.menuName }
         case .drink:
             return Drink.allCases.map { $0.menuName }
         case .shake:
@@ -44,12 +37,12 @@ enum Product: String, CaseIterable {
         }
     }
     
-    var productPrice: [Double] {
+    var productPrice: [Decimal] {
         switch self {
         case .burgers:
             return Burger.allCases.map { $0.menuPrice }
         case .hotdogs:
-            return Dogs.allCases.map { $0.menuPrice }
+            return Hotdog.allCases.map { $0.menuPrice }
         case .drink:
             return Drink.allCases.map { $0.menuPrice }
         case .shake:
@@ -63,6 +56,58 @@ enum Product: String, CaseIterable {
         }
     }
     
+    private enum Burger: String, CaseIterable {
+        case hamburger = "햄버거"
+        case cheeseburger = "치즈 버거"
+        case baconburger = "베이컨 버거"
+        case baconcheeseburger = "베이컨 치즈 버거"
+        case l_hamburger = "리틀 햄버거"
+        case l_cheeseburger = "리틀 치즈 버거"
+        case l_baconburger = "리틀 베이컨 버거"
+        case l_baconcheeseburger = "리틀 베이컨 치즈 버거"
+        
+        var menuName: String { rawValue }
+        
+        var menuPrice: Decimal {
+            switch self {
+            case .hamburger:
+                return 13.4
+            case .cheeseburger:
+                return 14.9
+            case .baconburger:
+                return 15.9
+            case .baconcheeseburger:
+                return 17.4
+            case .l_hamburger:
+                return 9.9
+            case .l_cheeseburger:
+                return 11.4
+            case .l_baconburger:
+                return 12.4
+            case .l_baconcheeseburger:
+                return 13.9
+            }
+        }
+    }
+    
+    private enum Hotdog: String, CaseIterable {
+            case beefHotDog = "비프 핫도그"
+            case cheeseHotDog = "치즈 핫도그"
+            case baconHotDog = "베이컨 핫도그"
+            case baconcheeseHotDog = "베이컨 치즈 핫도그"
+            
+            var menuName: String { rawValue }
+            
+            var menuPrice: Decimal {
+                switch self {
+                case .beefHotDog: return 8.9
+                case .cheeseHotDog: return 10.4
+                case .baconHotDog: return 11.4
+                case .baconcheeseHotDog: return 12.9
+                }
+            }
+        }
+    
     private enum Drink: String, CaseIterable {
         case soda = "탄산음료"
         case water = "생수"
@@ -72,7 +117,7 @@ enum Product: String, CaseIterable {
         
         var menuName: String { rawValue }
         
-        var menuPrice: Double {
+        var menuPrice: Decimal {
             switch self {
             case .soda:
                 return 3.9
@@ -100,7 +145,7 @@ enum Product: String, CaseIterable {
         
         var menuName: String { rawValue }
         
-        var menuPrice: Double { return 8.9 }
+        var menuPrice: Decimal { return 8.9 }
     }
     
     
@@ -112,7 +157,7 @@ enum Product: String, CaseIterable {
         
         var menuName: String { rawValue }
         
-        var menuPrice: Double {
+        var menuPrice: Decimal {
             switch self {
             case .veggie:
                 return 9.9
@@ -132,7 +177,7 @@ enum Product: String, CaseIterable {
             
             var menuName: String { rawValue }
             
-            var menuPrice: Double {
+            var menuPrice: Decimal {
                 switch self {
                 case .peanut:
                     return 8.9
@@ -149,7 +194,7 @@ enum Product: String, CaseIterable {
             
             var menuName: String { rawValue }
             
-            var menuPrice: Double {
+            var menuPrice: Decimal {
                 switch self {
                 case .little:
                     return -2.0

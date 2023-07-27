@@ -7,16 +7,12 @@
 
 import Foundation
 
-final class PickMenus {
-    static var pickedMenus: [Menu] = []
-}
-
 class Menu {
     var name: String
-    var price: Double
+    var price: Decimal
     var sizeUp: Size = .nomal
     
-    init(_ name: String, _ price: Double) {
+    init(_ name: String, _ price: Decimal) {
         self.name = name
         self.price = price
     }
@@ -24,11 +20,13 @@ class Menu {
 
 class Burger: Menu {
     
-    func orderSmallSize() {
-        //
-    }
+    func orderSmallSize() {}
 }
 
-class Dogs: Menu {
-    
-}
+class Hotdog: Menu {}
+class Drinks: Menu {}
+class Milkshakes: Menu {}
+class Sandwiches: Menu {}
+class Fries: Menu {}
+
+
