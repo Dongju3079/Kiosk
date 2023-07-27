@@ -10,6 +10,5 @@ import Foundation
 class PrintReceipt {
     func printReceipt(payItem: [Menu], remainMoney: Double){
         print("---------- 영수증 ---------")
-        
     }
 }

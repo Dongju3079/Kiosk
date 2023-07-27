@@ -49,8 +49,4 @@ class UserInfo {
         Self.poket = []
     }
     
-}    func emptyPoket() {
-        Self.poket = []
-    }
-    
 }
