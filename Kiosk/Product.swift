@@ -47,10 +47,10 @@ enum MainName: String, CaseIterable {
 enum Product: String {
     
     case hotdog = "Hotdog"
-    case drink = "Drink"
-    case shake = "Shake"
+    case drink = "Drink "
+    case shake = "Shake "
     case burger = "Burger"
-    case fries = "Fries"
+    case fries = "Fries "
     case sandwiches = "Sandwiches"
     case sizeup = "Select Size"
     

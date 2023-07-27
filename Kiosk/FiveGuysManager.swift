@@ -17,30 +17,28 @@ final class OrderManager {
         }
         
         while true {
-            printDrinksMenu(type: type, drinkList, pickMenus: UserInfo.poket)
+            noticeFoodMenu(type: type, drinkList, pickMenus: UserInfo.poket)
             guard let userInput = readLine(),
                   let userInput = Int(userInput) else {
-                print("올바른 메뉴를 입력해주세요. 가드 \n")
+                print("‼️ 올바른 메뉴를 입력해주세요.")
                 continue
             }
-            //
             if UserInfo.poket.isEmpty && userInput == drinkList.count + 1 {
-                print("올바른 메뉴를 입력해주세요. \n")
+                print("‼️ 올바른 메뉴를 입력해주세요. \n")
                 continue
             }
             
             switch userInput {
             case 0:
-                print("뒤로가기를 선택하셨습니다. \n")
+                print("🖥️ 뒤로가기를 선택하셨습니다.\n")
                 completion()
                 return
             case (1...drinkList.count):
-                // 감자 튀김, 버거인 경우 size를 선택해야 함으로
-                if type.name == "감자튀김" || type.name == "버거" {
+                if type.name == "Fries" || type.name == "Burger" { // 사이즈 체크
                     sizeCheck(type: type, userInfo: userInfo, userInput: userInput)
                 } else {
                     userInfo.updatePoket(food: drinkList[userInput - 1])
-                    print("\(drinkList[userInput - 1].name)를 주문하셨습니다. 가격은 \(drinkList[userInput - 1].price * 1000)원 입니다. \n")
+                    print("🖥️ \(drinkList[userInput - 1].name)를 주문하셨습니다. 가격은 \(drinkList[userInput - 1].price * 1000)원 입니다. \n")
                     continue
                 }
                 
@@ -50,7 +48,7 @@ final class OrderManager {
                 printPickedMenu(pickMenus: UserInfo.poket)
                 
                 guard UserInfo.poket.isEmpty != true else {
-                    print("장바구니가 비었습니다.")
+                    print("🖥️ 장바구니가 비었습니다.")
                     break
                 }
                 
@@ -62,31 +60,31 @@ final class OrderManager {
                     userInfo.removePoket(index: userInput - 1)
                 case 0:
                     break INTER
-                default: print("올바른 메뉴를 입력해주세요. \n")
+                default: print("🖥️ 올바른 메뉴를 입력해주세요. \n")
                 }
             }
                 
             default:
-                print("올바른 메뉴를 입력해주세요. \n")
+                print("🖥️ 올바른 메뉴를 입력해주세요. \n")
             }
         }
     }
 }
 
 extension OrderManager {
-    func printDrinksMenu(type: Product, _ drinkList: [Menu], pickMenus: [Menu]) {
+    func noticeFoodMenu(type: Product, _ foodList: [Menu], pickMenus: [Menu]) {
         let totalLength = 40
         let paddingLength = totalLength - Int(type.rawValue.count) - 10
         let padding = String(repeating: " ", count: paddingLength / 2)
         
         print("")
         print("*-----------------------------------*")
-        print("|\(padding)\(type) MENU\(padding)|")
+        print("|\(padding)\(type.name) MENU\(padding)|")
         print("*-----------------------------------*")
-        for (index, drink) in drinkList.enumerated() {
+        for (index, food) in foodList.enumerated() {
             let num = String(format: "%2d", index + 1)
-            let menuName = drink.name.padding(toLength: 20, withPad: " ", startingAt: 0)
-            let menuPrice = NSDecimalNumber(decimal: drink.price).doubleValue // double로 형변환
+            let menuName = food.name.padding(toLength: 20, withPad: " ", startingAt: 0)
+            let menuPrice = NSDecimalNumber(decimal: food.price).doubleValue // double로 형변환
             let formattedPrice = String(format: "%4g", menuPrice) // g 서식지정자: 소수점 이하 0을 제거
 
             print("| \(num). \(menuName) | W \(formattedPrice) |")
@@ -96,6 +94,9 @@ extension OrderManager {
         print("*-----------------------------------*")
         print("|  0. 뒤로가기 ⏪                     |")
         print("*-----------------------------------*")
+        print("")
+        print("🖥️ 메뉴를 입력하세요: ", terminator: "")
+
     }
     
     func printPickedMenu(pickMenus: [Menu]) {
