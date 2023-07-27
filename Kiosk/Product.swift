@@ -21,7 +21,6 @@ enum MainName: String, CaseIterable {
     case drink = "DRINK"
     case shake = "SHAKE"
     
-    
     var name: String { rawValue }
     
     

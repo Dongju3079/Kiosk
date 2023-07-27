@@ -1,33 +1,22 @@
 import Foundation
 
-func aaa() {
-    print("장바구니 출력")
-}
-
 func printer() {
-//    DispatchQueue.global().asyncAfter(wallDeadline: .now() + 60) {
-//        aaa()
-//        printer()
-//        print("""
-//                          장바구니: \(UserInfo.poket.map({ $0.name }).joined(separator: " ,"))
-//                          총 금액: \((UserInfo.poket.reduce(0) { $0 + $1.price }) * 1000)
-//             """)
-//    }
-    
-}
-
-func compareTime() -> Bool {
-    let calendar = Calendar.current
-    let now = Date()
-    let components = calendar.dateComponents([.hour, .minute], from: now)
-    if let hour = components.hour, let minute = components.minute {
-        // 현재 시간이 오후 11시부터 11시 30분 사이인지 확인
-        if hour == 23 && minute >= 0 && minute <= 30 { return true }
+    DispatchQueue.global().asyncAfter(wallDeadline: .now() + 60) {
+        printer()
+        print("""
+        장바구니: \(UserInfo.poket.map({ $0.name }).joined(separator: " ,"))
+        총 금액: \((UserInfo.poket.reduce(0) { $0 + $1.price }) * 1000)
+        """)
     }
-    return false
 }
 
 let closure: () -> Void = {
+    var pocketList: String = ""
+    UserInfo.poket.forEach {
+        pocketList += $0.name + ", "
+    }
+    print("🛒 장바구니 🛒")
+    print(pocketList)
     print("~~~~~~~~ 3초 대기 ~~~~~~~~")
     //sleep(3)
 }
@@ -103,10 +92,23 @@ extension Kiosk {
                 *_____________________*
 
                 """)
-        print("🖥️ 메뉴를 입력하세요: ", terminator: "")
-        // print("\(allMenu.count + 1). CALCULATION [나의 장바구니]")
-        // print("나의 잔고: \(user.money * 1000)")
+        print("🖥️ 나의 잔고: \(user.money * 1000)")
+        print("🖥️ 메뉴를 입력하세요: ", terminator: "")        // print("\(allMenu.count + 1). CALCULATION [나의 장바구니]")
 
+    }
+    
+    // 장바구니
+    func basket() {
+        guard UserInfo.poket.isEmpty != true else {
+            print("장바구니가 비었습니다.")
+            return
+        }
+        
+        var payment: Payment? = Payment()
+        guard let test = payment else { return }
+        test.basket(userInfo: user)
+        payment = nil
+        
     }
 }
 
