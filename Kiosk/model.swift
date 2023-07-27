@@ -1,5 +1,5 @@
 //
-//  burger.swift
+//  model.swift
 //  Kiosk
 //
 //  Created by daelee on 2023/07/24.
@@ -74,5 +74,15 @@ class UserInfo {
     func emptyPoket() {
         Self.poket = []
     }
+}
+
+class Receipt: Menu {
+    var count: Int
+    var priceSum: Double
     
+    init(name: String, price: Decimal, count: Int, priceSum: Double) {
+        self.count = count
+        self.priceSum = priceSum
+        super.init(name, price)
+    }
 }
