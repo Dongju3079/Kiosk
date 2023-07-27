@@ -37,11 +37,14 @@ func printHomeKiosk() {
             *---------------------*
             |  FIVE JAYS MENU     |
             *_____________________*
-            | 1. Burgers   :햄버거: |
-            | 2. Hotdog   :핫도그:  |
-            | 3. Drinks   :스튜가_담긴_컵: |
-            | 4. Sandwiches :샌드위치: |
-            | 0. Exit    :손인사::피부톤-3: |
+            | 1. Burgers      []  |
+            | 2. Hotdog       []  |
+            | 3. Sandwiches   []  |
+            | 4. FREIES       []  |
+            | 5. DRINK        []  |
+            | 6. SHAKE        []  |
+            | 7. POCKET       []  |
+            | 0. Exit         []  |
             -----------------------
             """)
 }
@@ -68,10 +71,10 @@ class Kiosk {
                 OrderManager().orderFoods(type: .hotdog, userInfo: UserInfo(), completion: closure)
                 break
             case "3":
-                // 샌드위치
+                OrderManager().orderFoods(type: .sandwiches, userInfo: UserInfo(), completion: closure)
                 break
             case "4":
-                // 감자튀김
+                OrderManager().orderFoods(type: .fries, userInfo: UserInfo(), completion: closure)
                 break
             case "5":
                 OrderManager().orderFoods(type: .drink, userInfo: UserInfo(), completion: closure)
@@ -99,27 +102,13 @@ class Kiosk {
 
 extension Kiosk {
     
-    // 사이즈 구별없는 메뉴
-    func nonSizeMene(type: Product) {
-        let test = menu.nonSizeFoodListUpdate(type)
-        OrderManager().orderFoods(foods: test, type: type, userInfo: user)
-        menu.foods = []
-    }
-    
-    // 사이즈 구별있는 메뉴
-    func onTheSizeMene(type: Product) {
-        let test = menu.nonSizeFoodListUpdate(type)
-        OrderManager().orderFoods(foods: test, type: type, userInfo: user)
-        menu.foods = []
-    }
-    
     // 안내문구
     func notice() {
         printHomeKiosk()
         
-        print("\(allMenu.count + 1). CALCULATION [나의 장바구니]")
-        print("나의 잔고: \(user.money * 1000)")
-
+        print("""
+        나의 잔고: \(user.money * 1000)
+        """) // 장바구니 항목 추가
     }
     
     // 장바구니
