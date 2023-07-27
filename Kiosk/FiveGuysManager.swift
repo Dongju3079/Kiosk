@@ -10,7 +10,9 @@ import Foundation
 final class OrderManager {
     
     func orderFoods(type: Product, userInfo: UserInfo, completion: () -> Void) {
-                
+        
+        print("test")
+        
         var foodList: [Menu] = []
         
         for i in type.productName.indices {
