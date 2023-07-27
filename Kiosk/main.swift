@@ -1,7 +1,7 @@
 import Foundation
 
 func printer() {
-    DispatchQueue.global().asyncAfter(wallDeadline: .now() + 5) {
+    DispatchQueue.global().asyncAfter(wallDeadline: .now() + 60) {
         printer()
         print("""
         장바구니: \(UserInfo.poket.map({ $0.name }).joined(separator: " ,"))
