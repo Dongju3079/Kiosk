@@ -21,11 +21,8 @@ func compareTime() -> Bool {
 }
 
 class Payment {
-    
     let orderManager = OrderManager()
-    
     var loop = true
-    
     lazy var mainAmount = UserInfo.poket.reduce(0) { $0 + $1.price }
     
     deinit  {
@@ -33,10 +30,7 @@ class Payment {
     }
 }
 
-// MARK: - 기능확장
-
 extension Payment {
-    
     // 장바구니 사이클
     func basket(userInfo: UserInfo) {
         printList()
@@ -60,11 +54,8 @@ extension Payment {
             case "2":
                 if !compareTime() {
                     payment(user: userInfo)
-                    return
-                }
-                print("❗️현재 은행 점검 시간입니다.")
-                return
-                
+                    
+                } else { print("❗️현재 은행 점검 시간입니다.") }
             case "3":
                 loop.toggle()
                 return

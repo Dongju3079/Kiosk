@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - 메뉴리스트
 class Menu {
     var name: String
     var price: Decimal
@@ -19,13 +20,9 @@ class Menu {
 }
 
 // MARK: - User
-
 class UserInfo {
-    
     static var poket: [Menu] = []
-    
     var money: Decimal = 0
-    
     lazy var firstMoney = Double.random(in: 30...50)
     
     func updatePoket(food: Menu) {

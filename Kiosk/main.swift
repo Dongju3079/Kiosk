@@ -1,7 +1,7 @@
 import Foundation
 
 func printer() {
-    DispatchQueue.global().asyncAfter(wallDeadline: .now() + 5) {
+    DispatchQueue.global().asyncAfter(wallDeadline: .now() + 60) {
         printer()
         print("""
         장바구니: \(UserInfo.poket.map({ $0.name }).joined(separator: " ,"))
@@ -26,11 +26,14 @@ func printHomeKiosk() {
             *---------------------*
             |  FIVE JAYS MENU     |
             *_____________________*
-            | 1. Burgers   :햄버거: |
-            | 2. Hotdog   :핫도그:  |
-            | 3. Drinks   :스튜가_담긴_컵: |
-            | 4. Sandwiches :샌드위치: |
-            | 0. Exit    :손인사::피부톤-3: |
+            | 1. Burgers      []  |
+            | 2. Hotdog       []  |
+            | 3. Sandwiches   []  |
+            | 4. FREIES       []  |
+            | 5. DRINK        []  |
+            | 6. SHAKE        []  |
+            | 7. POCKET       []  |
+            | 0. Exit         []  |
             -----------------------
             """)
 }
@@ -57,10 +60,10 @@ class Kiosk {
                 OrderManager().orderFoods(type: .hotdog, userInfo: UserInfo(), completion: closure)
                 break
             case "3":
-                // 샌드위치
+                OrderManager().orderFoods(type: .sandwiches, userInfo: UserInfo(), completion: closure)
                 break
             case "4":
-                // 감자튀김
+                OrderManager().orderFoods(type: .fries, userInfo: UserInfo(), completion: closure)
                 break
             case "5":
                 OrderManager().orderFoods(type: .drink, userInfo: UserInfo(), completion: closure)
@@ -92,9 +95,23 @@ extension Kiosk {
     func notice() {
         printHomeKiosk()
         
-        print("\(allMenu.count + 1). CALCULATION [나의 장바구니]")
-        print("나의 잔고: \(user.money * 1000)")
-
+        print("""
+        나의 잔고: \(user.money * 1000)
+        """) // 장바구니 항목 추가
+    }
+    
+    // 장바구니
+    func basket() {
+        guard UserInfo.poket.isEmpty != true else {
+            print("장바구니가 비었습니다.")
+            return
+        }
+        
+        var payment: Payment? = Payment()
+        guard let test = payment else { return }
+        test.basket(userInfo: user)
+        payment = nil
+        
     }
 }
 
