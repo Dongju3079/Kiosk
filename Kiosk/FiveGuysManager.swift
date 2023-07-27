@@ -16,8 +16,7 @@ final class UserInfo {
 }
 
 final class OrderManager {
-    
-    func orderDrinks(type: Product, userInfo: UserInfo) {
+    func orderDrinks(type: Product, userInfo: UserInfo, completion: () -> Void) {
         var drinkList: [Menu] = []
         
         for i in type.productName.indices {
@@ -41,6 +40,7 @@ final class OrderManager {
             switch userInput {
             case 0:
                 print("뒤로가기를 선택하셨습니다. \n")
+                completion()
                 return
             case (1...drinkList.count):
                 // 감자 튀김인 경우 size를 선택해야 함으로
