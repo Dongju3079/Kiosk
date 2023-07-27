@@ -31,8 +31,6 @@ final class OrderManager {
             
             switch userInput {
             case 0:
-                // 영수증 표시 test
-                PrintReceipt().printReceipt(payItem: userInfo.pickMenu, remainMoney: 10000)
                 print("뒤로가기를 선택하셨습니다. \n")
                 completion()
                 return
@@ -147,7 +145,7 @@ extension OrderManager {
                 //                            userInfo.updateMenu(data: sizeupList[userInput - 1])
                 print("\(sizeupList[sizeupList.count - 1].name)를 주문하셨습니다. 가격은 \(sizeupList[sizeupList.count - 1].price * 1000))원 입니다. \n")
                 
-                print("\(sizeupList[sizeupList.count - 1].name)를 주문하셨습니다. 가격은 \(Int(sizeupList[sizeupList.count - 1].price * 1000))원 입니다. \n")
+                print("\(sizeupList[sizeupList.count - 1].name)를 주문하셨습니다. 가격은 \(sizeupList[sizeupList.count - 1].price * 1000)원 입니다. \n")
 
                 selectSize = false // 사이즈를 선택한 경우 사이즈 선택 while문을 종료
                 continue

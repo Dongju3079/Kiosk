@@ -8,7 +8,7 @@
 import Foundation
 
 class PrintReceipt {
-    func printReceipt(payItem: [Menu], remainMoney: Double){
+    func printReceipt(payItem: [Menu], remainMoney: Decimal){
         print("---------- 영수증 ---------")
         // 결제 시간
         let formatter = DateFormatter()
@@ -18,7 +18,7 @@ class PrintReceipt {
         print("-------------------------")
         print("상품명 / 단가 / 수량 / 금액")
         
-        var sumItem: Double = 0 // 장바구니에 있는 item의 총 가격 합
+        var sumItem: Decimal = 0 // 장바구니에 있는 item의 총 가격 합
         // 각 menu별로 구분하기 위해 선언
         var payItem_burgers: [Menu] = []
         var payItem_dogs: [Menu] = []
@@ -160,18 +160,18 @@ class PrintReceipt {
         
         print("--------------------------")
         print("총 품목 수량 : \(payItem.count)")
-        let sumPrice: Double = sumItem * 1000
-        print("총 품목 금액 : \(Int(sumPrice))원")
+        let sumPrice: Decimal = sumItem * 1000
+        print("총 품목 금액 : \(sumPrice)원")
         // 부가세 (10%)
-        let surtax: Int = Int(sumPrice * 0.1)
+        let surtax: Decimal = sumPrice * 0.1
         print("부가세(10%) : \(surtax)원")
-        let payment: Int = Int(sumPrice) + surtax
+        let payment: Decimal = sumPrice + surtax
         print("합계 : \(payment)원")
         print("--------------------------")
         print("결제 방식 : 현금")
-        print("현재 금액 : \(payment + Int(remainMoney))원")
+        print("현재 금액 : \(payment + remainMoney)원")
         print("결제 대상 금액 : \(payment)원")
-        print("남은 금액 : \(Int(remainMoney))원")
+        print("남은 금액 : \(remainMoney)원")
         print("--------------------------")
     }
     

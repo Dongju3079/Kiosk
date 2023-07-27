@@ -49,11 +49,12 @@ class UserInfo {
         Self.poket = []
     }
 }
+
 class Receipt: Menu {
     var count: Int
     var priceSum: Double
     
-    init(name: String, price: Double, count: Int, priceSum: Double) {
+    init(name: String, price: Decimal, count: Int, priceSum: Double) {
         self.count = count
         self.priceSum = priceSum
         super.init(name, price)
