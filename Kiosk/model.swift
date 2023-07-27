@@ -7,10 +7,6 @@
 
 import Foundation
 
-final class PickMenus {
-    static var pickedMenus: [Menu] = []
-}
-
 class Menu {
     var name: String
     var price: Decimal

@@ -9,6 +9,17 @@ import Foundation
 
 // MARK: - 장바구니
 
+func compareTime() -> Bool {
+    let calendar = Calendar.current
+    let now = Date()
+    let components = calendar.dateComponents([.hour, .minute], from: now)
+    if let hour = components.hour, let minute = components.minute {
+        // 현재 시간이 오후 11시부터 11시 30분 사이인지 확인
+        if hour == 11 && minute >= 30 && minute <= 59 { return true }
+    }
+    return false
+}
+
 class Payment {
     
     let orderManager = OrderManager()
@@ -47,7 +58,13 @@ extension Payment {
             case "1":
                 editBasket(user: userInfo)
             case "2":
-                payment(user: userInfo)
+                if !compareTime() {
+                    payment(user: userInfo)
+                    return
+                }
+                print("❗️현재 은행 점검 시간입니다.")
+                return
+                
             case "3":
                 loop.toggle()
                 return
