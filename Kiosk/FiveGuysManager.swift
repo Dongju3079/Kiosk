@@ -142,8 +142,7 @@ extension OrderManager {
                 sizeupList.append(Menu(menuSizeName, menuSizePrice))
                 
                 // 장바구니에 저장
-                //                            userInfo.updateMenu(data: sizeupList[userInput - 1])
-                print("\(sizeupList[sizeupList.count - 1].name)를 주문하셨습니다. 가격은 \(sizeupList[sizeupList.count - 1].price * 1000))원 입니다. \n")
+//                UserInfo().updatePoket(food: sizeupList[userInput - 1])
                 
                 print("\(sizeupList[sizeupList.count - 1].name)를 주문하셨습니다. 가격은 \(sizeupList[sizeupList.count - 1].price * 1000)원 입니다. \n")
 

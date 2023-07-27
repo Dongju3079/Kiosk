@@ -51,6 +51,38 @@ class Kiosk {
     let user = UserInfo()
     
     func order() {
+        
+        var test: [Menu] = []
+
+        test.append(Menu("Hamburger Little", 10))
+        test.append(Menu("Cheeseburger Regular", 10))
+        test.append(Menu("스텔라 아르투아", 10))
+        test.append(Menu("탄산음료", 10))
+        test.append(Menu("바나나", 10))
+        test.append(Menu("버드와이저", 10))
+        test.append(Menu("초콜릿", 10))
+        test.append(Menu("Cheeseburger Regular", 10))
+        test.append(Menu("바나나", 10))
+        test.append(Menu("바나나", 10))
+        test.append(Menu("베지 샌드위치", 10))
+        test.append(Menu("치즈베지 샌드위치", 10))
+        test.append(Menu("Cheeseburger Regular", 10))
+        test.append(Menu("Cheeseburger little", 10))
+        test.append(Menu("BLT(베이컨,양상추,토마토) 샌드위치", 10))
+        test.append(Menu("땅콩기름에 튀긴 파이브가이즈 스타일 프라이즈 Regular", 10))
+        test.append(Menu("땅콩기름에 튀긴 파이브가이즈 스타일 프라이즈 Large", 10))
+        test.append(Menu("땅콩기름에 튀긴 파이브가이즈 스타일 프라이즈 Little", 10))
+        test.append(Menu("BLT(베이컨,양상추,토마토) 샌드위치", 10))
+        test.append(Menu("땅콩기름에 튀긴 파이브가이즈 스타일 프라이즈 Little", 10))
+        test.append(Menu("케이준 스타일 프라이즈 Little", 10))
+        test.append(Menu("케이준 스타일 프라이즈 Large", 10))
+        test.append(Menu("BLT(베이컨,양상추,토마토) 샌드위치", 10))
+        test.append(Menu("케이준 스타일 프라이즈 Regular", 10))
+        test.append(Menu("케이준 스타일 프라이즈 Regular", 10))
+        test.append(Menu("케이준 스타일 프라이즈 Little", 10))
+        
+        PrintReceipt().printReceipt(payItem: test, remainMoney: 1000000)
+        
         printer()
         print("Welcome to FIVE J’s Burger")
         while true {
@@ -72,6 +104,7 @@ class Kiosk {
                 break
             case "4":
                 // 감자튀김
+                OrderManager().orderFoods(type: .fries, userInfo: UserInfo(), completion: closure)
                 break
             case "5":
                 OrderManager().orderFoods(type: .drink, userInfo: UserInfo(), completion: closure)
