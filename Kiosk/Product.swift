@@ -143,7 +143,7 @@ enum Product: String {
         
         var menuName: String { rawValue }
         
-        var menuPrice: Double {
+        var menuPrice: Decimal {
             switch self {
             case .veggie:
                 return 9.9
