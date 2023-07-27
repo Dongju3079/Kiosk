@@ -1,33 +1,22 @@
 import Foundation
 
-func aaa() {
-    print("장바구니 출력")
-}
-
 func printer() {
-//    DispatchQueue.global().asyncAfter(wallDeadline: .now() + 60) {
-//        aaa()
-//        printer()
-//        print("""
-//                          장바구니: \(UserInfo.poket.map({ $0.name }).joined(separator: " ,"))
-//                          총 금액: \((UserInfo.poket.reduce(0) { $0 + $1.price }) * 1000)
-//             """)
-//    }
-    
-}
-
-func compareTime() -> Bool {
-    let calendar = Calendar.current
-    let now = Date()
-    let components = calendar.dateComponents([.hour, .minute], from: now)
-    if let hour = components.hour, let minute = components.minute {
-        // 현재 시간이 오후 11시부터 11시 30분 사이인지 확인
-        if hour == 23 && minute >= 0 && minute <= 30 { return true }
+    DispatchQueue.global().asyncAfter(wallDeadline: .now() + 5) {
+        printer()
+        print("""
+        장바구니: \(UserInfo.poket.map({ $0.name }).joined(separator: " ,"))
+        총 금액: \((UserInfo.poket.reduce(0) { $0 + $1.price }) * 1000)
+        """)
     }
-    return false
 }
 
 let closure: () -> Void = {
+    var pocketList: String = ""
+    UserInfo.poket.forEach {
+        pocketList += $0.name + ", "
+    }
+    print("🛒 장바구니 🛒")
+    print(pocketList)
     print("~~~~~~~~ 3초 대기 ~~~~~~~~")
     //sleep(3)
 }
