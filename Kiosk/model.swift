@@ -14,7 +14,6 @@ final class PickMenus {
 class Menu {
     var name: String
     var price: Double
-    var sizeUp: Size = .nomal
     
     init(_ name: String, _ price: Double) {
         self.name = name
@@ -23,12 +22,18 @@ class Menu {
 }
 
 class Burger: Menu {
-    
     func orderSmallSize() {
         //
     }
 }
 
-class Dogs: Menu {
+class Receipt: Menu {
+    var count: Int
+    var priceSum: Double
     
+    init(name: String, price: Double, count: Int, priceSum: Double) {
+        self.count = count
+        self.priceSum = priceSum
+        super.init(name, price)
+    }
 }
