@@ -15,7 +15,7 @@ func compareTime() -> Bool {
     let components = calendar.dateComponents([.hour, .minute], from: now)
     if let hour = components.hour, let minute = components.minute {
         // 현재 시간이 오후 11시부터 11시 30분 사이인지 확인
-        if hour == 21 && minute >= 30 && minute <= 43 { return true }
+        if hour == 21 && minute >= 30 && minute <= 59 { return true }
     }
     return false
 }
