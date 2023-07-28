@@ -38,7 +38,6 @@ class Kiosk {
         printer()
         while true {
             notice()
-            
             let userInput = readLine()
             switch userInput {
             case "0":
