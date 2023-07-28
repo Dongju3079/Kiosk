@@ -33,7 +33,6 @@ extension Kiosk {
         printer()
         while true {
             notice()
-            
             let userInput = readLine()
             
             switch userInput {

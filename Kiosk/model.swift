@@ -54,3 +54,6 @@ class Receipt: Menu {
         super.init(name, price)
     }
 }
+class Sandwiches: Menu {
+    
+}
