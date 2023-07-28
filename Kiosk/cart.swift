@@ -68,7 +68,7 @@ class PrintCart {
             } else {
             }
         }
-        
+        //
         print("\(String(repeating: "-", count: 58))")
         
         print(string_right(text: "Total Item Quantity : ", lenghth: 45) + string_right(text: String(payItem.count), lenghth: 13))
