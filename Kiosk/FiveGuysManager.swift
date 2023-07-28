@@ -10,12 +10,13 @@ final class UserInfo {
 
 final class OrderManager {
     func orderFoods(type: Product, userInfo: UserInfo) {
+    
         
     var shoppingList: [Menu] = [] // 이제 여기에 유저가 선택한 상품을 담아야 하는데...
     
-//    for food in type.productName.indices {
-//        shoppingList.append(Menu(type.productName[i], type.productPrice[i]))
-//    }
+    for food in type.productName.indices {
+        shoppingList.append(Menu(type.productName[food], type.productPrice[food]))
+    }
         
     func shoppingList() {
       print("장바구니 항목")
@@ -74,6 +75,7 @@ private extension OrderManager {
     func printDrinksMenu(type: Product, _ drinkList: [Menu], pickMenus: [Menu]) {
         print("[ \(type.name) MENU ]")
         for (index, drink) in drinkList.enumerated() {
+           
             print("\(index + 1). \(drink.name) | W \(drink.price) |")
         }
         if !pickMenus.isEmpty {

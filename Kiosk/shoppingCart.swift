@@ -4,10 +4,11 @@ class ShoppingCart {
 
     func printShoppingCart(payItem: [Menu]) {
         
-        print ("""
-                [장바구니]
-                ---------주문내역확인-----------
-                """)
+        print("\(String(repeating: "-", count: 24)) Order \(String(repeating: "-", count: 25))")
+//        print ("""
+//                [장바구니]
+//                ---------주문내역확인-----------
+//                """)
         
         var sumItem: Decimal = 0
         
@@ -59,8 +60,10 @@ class ShoppingCart {
         // 감자튀김
         displayItem(index: 5, items: payItem_fries)
         
-        print("----------------------------")
-        print("총 수량 : \(payItem.count)")
+        print("\(String(repeating: "-", count: 58))")
+
+//        print("----------------------------")
+//        print("TOTAL : \(payItem.count)")
 
         let sumPrice: Decimal = sumItem * 1000
         let surtax: Decimal = sumPrice * 0.1
