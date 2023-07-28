@@ -1,3 +1,11 @@
+//
+//  main.swift
+//  Kiosk
+//
+//  Created by daelee on 2023/07/24.
+//
+//
+
 import Foundation
 
 func printer() {
@@ -46,7 +54,6 @@ class Kiosk {
                 OrderManager().orderFoods(type: .sandwiches, userInfo: UserInfo(), completion: closure)
                 break
             case "4":
-                // 감자튀김
                 OrderManager().orderFoods(type: .fries, userInfo: UserInfo(), completion: closure)
                 break
             case "5":
@@ -63,7 +70,6 @@ class Kiosk {
                 var payment: Payment? = Payment()
                 guard let test = payment else { return }
                 test.basket(userInfo: user)
-                //        OrderManager().pay(userInfo: user)
                 payment = nil
             default:
                 print("‼️ 숫자로 입력하세요.")
@@ -79,7 +85,7 @@ extension Kiosk {
     func notice() {
         
         print("""
-
+                
                 *---------------------*
                 |   FIVE JAYS  MENU   |
                 *_____________________*
@@ -93,28 +99,25 @@ extension Kiosk {
                 | 7. MY ORDER     🛒  |
                 | 0. EXIT         👋🏼  |
                 *_____________________*
-
                 
-                나의 잔고: \(user.money * 1000)
-                
+                                
                 """)
-        print("🖥️ 메뉴를 입력하세요: ", terminator: "")
-        // print("\(allMenu.count + 1). CALCULATION [나의 장바구니]")
-        // print("나의 잔고: \(user.money * 1000)")
-    }
-    
-    // 장바구니
-    func basket() {
-        guard UserInfo.poket.isEmpty != true else {
-            print("장바구니가 비었습니다.")
-            return
+        print("🖥️ 나의 잔고: \(user.money * 1000)")
+        print("🖥️ 메뉴를 입력하세요: ", terminator: "")        
+        
+        // 장바구니
+        func basket() {
+            guard UserInfo.poket.isEmpty != true else {
+                print("장바구니가 비었습니다.")
+                return
+            }
+            
+            var payment: Payment? = Payment()
+            guard let test = payment else { return }
+            test.basket(userInfo: user)
+            payment = nil
+            
         }
-        
-        var payment: Payment? = Payment()
-        guard let test = payment else { return }
-        test.basket(userInfo: user)
-        payment = nil
-        
     }
 }
 

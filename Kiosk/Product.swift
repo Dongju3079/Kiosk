@@ -4,6 +4,8 @@
 //
 //  Copyright (c) 2023 z-wook. All right reserved.
 //
+//
+//
 
 import Foundation
 
@@ -22,34 +24,15 @@ enum MainName: String, CaseIterable {
     case shake = "SHAKE"
     
     var name: String { rawValue }
-    
-    
-//    var menuPrice: String {
-//        switch self {
-//        case .burger:
-//            return "비프 통살을 다져만든 버거"
-//        case .hotdog:
-//            return "매장에서 신선하게 만드는 핫도그"
-//        case .sandwiches:
-//            return "홈메이드 샌드위치"
-//        case .fries:
-//            return "신선한 감자로 튀긴 감자튀김"
-//        case .drink:
-//            return "매장에서 직접 만드는 음료"
-//        case .shake:
-//            return "매장에서 직접 만드는 쉐이크"
-//        }
-//    }
-    
 }
 
 enum Product: String {
     
     case hotdog = "Hotdog"
-    case drink = "Drink"
-    case shake = "Shake"
+    case drink = "Drink "
+    case shake = "Shake "
     case burger = "Burger"
-    case fries = "Fries"
+    case fries = "Fries "
     case sandwiches = "Sandwiches"
     case sizeup = "Select Size"
     

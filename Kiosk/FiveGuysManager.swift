@@ -4,6 +4,7 @@
 //
 //  Copyright (c) 2023 z-wook. All right reserved.
 //
+//
 
 import Foundation
 // MARK: - 메뉴선택
@@ -18,40 +19,39 @@ final class OrderManager {
         }
         
         while true {
-            printfoodsMenu(type: type, foodList, pickMenus: UserInfo.poket)
+            noticeFoodMenu(type: type, foodList, pickMenus: UserInfo.poket)
             guard let userInput = readLine(),
                   let userInput = Int(userInput) else {
-                print("올바른 메뉴를 입력해주세요. 가드 \n")
+                print("‼️ 올바른 메뉴를 입력해주세요.")
                 continue
             }
             
             if UserInfo.poket.isEmpty && userInput == foodList.count + 1 {
-                print("올바른 메뉴를 입력해주세요. \n")
+                print("‼️ 올바른 메뉴를 입력해주세요. \n")
                 continue
             }
             
             switch userInput {
             case 0:
-                print("Home를 선택하셨습니다. \n")
+                print("🖥️ 뒤로가기를 선택하셨습니다.\n")
                 completion()
                 return
             case (1...foodList.count):
-                // 감자 튀김, 버거인 경우 size를 선택해야 함으로
-                if type.name == "Fries" || type.name == "Burger" {
+                if type.name == "Fries " || type.name == "Burger" { // 사이즈 체크
                     sizeCheck(type: type, userInfo: userInfo, userInput: userInput)
                 } else {
                     userInfo.updatePoket(food: foodList[userInput - 1])
-                    print("\(foodList[userInput - 1].name)를 주문하셨습니다. 가격은 \(foodList[userInput - 1].price * 1000)원 입니다. \n")
+                    print("🖥️ \(foodList[userInput - 1].name)를 주문하셨습니다. 가격은 \(foodList[userInput - 1].price * 1000)원 입니다. \n")
                     continue
                 }
                 
             case foodList.count + 1: // 삭제
                 
-          INTER:while true {
+            INTER:while true {
                 printPickedMenu(pickMenus: UserInfo.poket)
                 
                 guard UserInfo.poket.isEmpty != true else {
-                    print("장바구니가 비었습니다.")
+                    print("🖥️ 장바구니가 비었습니다.")
                     break INTER
                 }
                 
@@ -63,40 +63,43 @@ final class OrderManager {
                     userInfo.removePoket(index: userInput - 1)
                 case 0:
                     break INTER
-                default: print("올바른 메뉴를 입력해주세요. \n")
+                default: print("🖥️ 올바른 메뉴를 입력해주세요. \n")
                 }
             }
                 
             default:
-                print("올바른 메뉴를 입력해주세요. \n")
+                print("🖥️ 올바른 메뉴를 입력해주세요. \n")
             }
         }
     }
 }
 
 extension OrderManager {
-    func printfoodsMenu(type: Product, _ drinkList: [Menu], pickMenus: [Menu]) {
+    func noticeFoodMenu(type: Product, _ foodList: [Menu], pickMenus: [Menu]) {
         let totalLength = 40
         let paddingLength = totalLength - Int(type.rawValue.count) - 10
         let padding = String(repeating: " ", count: paddingLength / 2)
         
         print("")
         print("*-----------------------------------*")
-        print("|\(padding)\(type) MENU\(padding)|")
+        print("|\(padding)\(type.name) MENU\(padding)|")
         print("*-----------------------------------*")
-        for (index, drink) in drinkList.enumerated() {
+        for (index, food) in foodList.enumerated() {
             let num = String(format: "%2d", index + 1)
-            let menuName = drink.name.padding(toLength: 20, withPad: " ", startingAt: 0)
-            let menuPrice = NSDecimalNumber(decimal: drink.price).doubleValue // double로 형변환
+            let menuName = food.name.padding(toLength: 20, withPad: " ", startingAt: 0)
+            let menuPrice = NSDecimalNumber(decimal: food.price).doubleValue // double로 형변환
             let formattedPrice = String(format: "%4g", menuPrice) // g 서식지정자: 소수점 이하 0을 제거
-
+            
             print("| \(num). \(menuName) | W \(formattedPrice) |")
         }
-
-
+        
+        
         print("*-----------------------------------*")
         print("|  0. Home                          |")
         print("*-----------------------------------*")
+        print("")
+        print("🖥️ 메뉴를 입력하세요: ", terminator: "")
+        
     }
     
     func printPickedMenu(pickMenus: [Menu]) {
@@ -120,15 +123,24 @@ extension OrderManager {
             }
             
             // 사이즈 선택 목록 display
-            print("[ \(type.productName[userInput - 1]) \(Product.sizeup.name) ]") // 사이즈 선택
-            for (index, size) in sizeList.enumerated() { // sizeList에 저장한 목록 표시
-                if size.price < 0 {
-                    print("\(index + 1). \(size.name) | W - \(NSDecimalNumber(decimal: abs(size.price)).doubleValue) |")
-                } else {
-                    print("\(index + 1). \(size.name) | W + \(NSDecimalNumber(decimal: size.price).doubleValue) |")
-                }
+            print("")
+            print("*-----------------------------------*")
+            print("|            Select Size            |")
+            print("*-----------------------------------*")
+            
+            for (index, size) in sizeList.enumerated() {
+                let formattedPrice = String(format: "%.1f", NSDecimalNumber(decimal: abs(size.price)).doubleValue)
+                let priceSign = size.price < 0 ? "-" : "+"
+                let sizeName = "\(index + 1). \(size.name)"
+                let paddingLength = 28 - sizeName.count - formattedPrice.count
+                let linePadding = String(repeating: " ", count: paddingLength)
+                print("| \(sizeName) \(linePadding) W \(priceSign)\(formattedPrice) |")
             }
-            print("0. Home\n")
+            
+            print("*-----------------------------------*")
+            print("| 0. Back                           |")
+            print("*-----------------------------------*")
+            print("")
             
             // 숫자인지 아닌지 구분
             guard let sizeInput = readLine(),
@@ -151,7 +163,7 @@ extension OrderManager {
                 // 장바구니에 저장
                 userInfo.updatePoket(food: Menu(menuSizeName, menuSizePrice))
                 print("\(sizeupList[0].name)를 주문하셨습니다. 가격은 \(sizeupList[0].price * 1000)원 입니다. \n")
-
+                
                 selectSize = false // 사이즈를 선택한 경우 사이즈 선택 while문을 종료
                 continue
                 
