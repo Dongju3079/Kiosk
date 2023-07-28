@@ -4,6 +4,8 @@
 //
 //  Copyright (c) 2023 z-wook. All right reserved.
 //
+//
+//
 
 import Foundation
 
@@ -21,38 +23,37 @@ enum MainName: String, CaseIterable {
     case drink = "DRINK"
     case shake = "SHAKE"
     
-    
     var name: String { rawValue }
     
     
-    var menuPrice: String {
-        switch self {
-        case .burger:
-            return "비프 통살을 다져만든 버거"
-        case .hotdog:
-            return "매장에서 신선하게 만드는 핫도그"
-        case .sandwiches:
-            return "홈메이드 샌드위치"
-        case .fries:
-            return "신선한 감자로 튀긴 감자튀김"
-        case .drink:
-            return "매장에서 직접 만드는 음료"
-        case .shake:
-            return "매장에서 직접 만드는 쉐이크"
-        }
-    }
+//    var menuPrice: String {
+//        switch self {
+//        case .burger:
+//            return "비프 통살을 다져만든 버거"
+//        case .hotdog:
+//            return "매장에서 신선하게 만드는 핫도그"
+//        case .sandwiches:
+//            return "홈메이드 샌드위치"
+//        case .fries:
+//            return "신선한 감자로 튀긴 감자튀김"
+//        case .drink:
+//            return "매장에서 직접 만드는 음료"
+//        case .shake:
+//            return "매장에서 직접 만드는 쉐이크"
+//        }
+//    }
     
 }
 
 enum Product: String {
     
-    case hotdog = "핫도그"
-    case drink = "드링크"
-    case shake = "쉐이크"
-    case burger = "버거"
-    case fries = "감자튀김"
-    case sizeup = "사이즈 선택"
-    case sandwiches = "샌드위치"
+    case hotdog = "Hotdog"
+    case drink = "Drink "
+    case shake = "Shake "
+    case burger = "Burger"
+    case fries = "Fries "
+    case sandwiches = "Sandwiches"
+    case sizeup = "Select Size"
     
     var name: String { rawValue }
     
@@ -96,9 +97,9 @@ enum Product: String {
     
     private enum Burger: String, CaseIterable {
         case hamburger = "Hamburger"
-        case cheeseburger = "Cheeseburger"
+        case cheeseburger = "Cheese Burger"
         case baconBurger = "Bacon Burger"
-        case baconCheeseburger = "Bacon Cheeseburger"
+        case baconCheeseburger = "Bacon Cheese Burger"
         
         var menuName: String { rawValue }
         
@@ -117,39 +118,39 @@ enum Product: String {
     }
     
     private enum Drink: String, CaseIterable {
-        case soda = "탄산음료"
-        case water = "생수"
-        case budweiser = "버드와이저"
-        case stella = "스텔라 아르투아"
-        case goose = "구스 아일랜드 IPA"
+        case coke = "Coke"
+        case water = "Water"
+        case budweiser = "Budweiser"
+        case stella = "Stella Artois"
+        case goose = "Goose Island IPA"
         
         var menuName: String { rawValue }
         
         var menuPrice: Decimal {
             switch self {
-            case .soda:
+            case .coke:
                 return 3.9
             case .water:
-                return 2.0
+                return 1.9
             case .budweiser:
-                return 6.0
+                return 5.9
             case .stella:
-                return 7.0
+                return 6.9
             case .goose:
-                return 9.0
+                return 8.9
             }
         }
     }
     
     private enum Shake: String, CaseIterable {
-        case chocolat = "초콜릿"
-        case peanutButter = "피넛버터"
-        case saltedCaramel = "솔티드 카라멜"
-        case banana = "바나나"
-        case strawberry = "딸기"
-        case oreo = "오레오"
-        case rotusBiscope = "로투스 비스코프"
-        case bacon = "베이컨"
+        case chocolat = "Chocolate"
+        case peanutButter = "Peanut Butter"
+        case saltedCaramel = "Salted Caramel"
+        case banana = "Banana"
+        case strawberry = "Strawberry"
+        case oreo = "Oreo"
+        case rotusBiscope = "Rotus Biscope"
+        case bacon = "Bacon"
         
         var menuName: String { rawValue }
         
@@ -157,10 +158,10 @@ enum Product: String {
     }
     
     private enum Hogdog: String, CaseIterable {
-        case beefHotDog = "비프 핫도그"
-        case cheeseHotDog = "치즈 핫도그"
-        case baconHotDog = "베이컨 핫도그"
-        case baconcheeseHotDog = "베이컨 치즈 핫도그"
+        case beefHotDog = "Beef Hogdog"
+        case cheeseHotDog = "Cheese Hogdog"
+        case baconHotDog = "Bacon Hogdog"
+        case baconcheeseHotDog = "Bacon Cheese Hogdog"
         
         var menuName: String { rawValue }
         
@@ -176,10 +177,10 @@ enum Product: String {
     
     
     private enum Sandwiches: String, CaseIterable {
-        case veggie = "베지 샌드위치"
-        case cheeseveggie = "치즈베지 샌드위치"
-        case grilledcheese = "그릴드치즈 샌드위치"
-        case blt = "BLT(베이컨,양상추,토마토) 샌드위치"
+        case veggie = "Veggie Sandwich"
+        case cheeseveggie = "Cheese Veggie"
+        case grilledcheese = "Grilled Cheese"
+        case blt = "BLT Sandwich"
         
         var menuName: String { rawValue }
         
@@ -198,8 +199,8 @@ enum Product: String {
     }
     
     private enum Fries: String, CaseIterable {
-        case peanut = "땅콩기름에 튀긴 파이브가이즈 스타일 프라이즈"
-        case cajun = "케이준 스타일 프라이즈"
+        case peanut = "Peanut Oil Fries"
+        case cajun = "Cajun Style Fries"
         
         var menuName: String { rawValue }
         
