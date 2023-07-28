@@ -10,32 +10,20 @@ import Foundation
 
 // MARK: - 장바구니
 
-func compareTime() -> Bool {
-    let calendar = Calendar.current
-    let now = Date()
-    let components = calendar.dateComponents([.hour, .minute], from: now)
-    if let hour = components.hour, let minute = components.minute {
-        // 현재 시간이 오후 11시부터 11시 30분 사이인지 확인
-        if hour == 21 && minute >= 30 && minute <= 59 { return true }
-    }
-    return false
-}
+
 
 class Payment {
+    let cartManager = PrintCart()
     let orderManager = OrderManager()
     var loop = true
     lazy var mainAmount = UserInfo.poket.reduce(0) { $0 + $1.price }
     
-    deinit  {
-        print("5초 뒤 메인화면으로 돌아갑니다.")
-        sleep(5)
-    }
+
 }
 
 extension Payment {
     // 장바구니 사이클
     func basket(userInfo: UserInfo) {
-        printList()
         
         while true {
             guard UserInfo.poket.isEmpty != true else {
@@ -43,9 +31,10 @@ extension Payment {
                 loop.toggle()
                 return
             }
-        
+            
+            cartManager.printCart(payItem: UserInfo.poket, remainMoney: (userInfo.money * 1000))
+//            cartManager.
             print("""
-            소요 금액 : \((mainAmount * 1000))
             1. 장바구니 수정 \n2. 결재 \n3. 메인메뉴
             """)
          
@@ -68,12 +57,12 @@ extension Payment {
     }
     
     // 항목 프린트
-    func printList() {
-        print("장바구니 항목")
-        for food in UserInfo.poket {
-            print("\(food.name) | W \(food.price) |")
-        }
-    }
+//    func printList() {
+//        print("장바구니 항목")
+//        for food in UserInfo.poket {
+//            print("\(food.name) | W \(food.price) |")
+//        }
+//    }
     
     // 장바구니 체크
     func checkBasket() {
@@ -86,10 +75,10 @@ extension Payment {
     
     // 장바구니 수정
     func editBasket(user: UserInfo) {
-        while true {
+    INTER:while true {
             guard UserInfo.poket.isEmpty != true else {
                 print("장바구니가 비었습니다.")
-                return
+                break INTER
             }
             
             orderManager.printPickedMenu(pickMenus: UserInfo.poket)
@@ -114,10 +103,25 @@ extension Payment {
             PrintReceipt().printReceipt(payItem: UserInfo.poket, remainMoney: (user.money * 1000))
             user.emptyPoket()
             loop.toggle()
+            print("5초 뒤 메인화면으로 돌아갑니다.")
+            sleep(5)
             return
         } else {
             print("\((mainAmount - user.money) * 1000)원이 부족합니다, 장바구니를 비워주세요.")
+            sleep(1)
         }
+    }
+    
+    // 은행점검 시간
+    func compareTime() -> Bool {
+        let calendar = Calendar.current
+        let now = Date()
+        let components = calendar.dateComponents([.hour, .minute], from: now)
+        if let hour = components.hour, let minute = components.minute {
+            // 현재 시간이 오후 11시부터 11시 30분 사이인지 확인
+            if hour == 21 && minute >= 30 && minute <= 59 { return true }
+        }
+        return false
     }
 }
 

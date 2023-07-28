@@ -1,25 +1,17 @@
 //
-//  receipt.swift
+//  cart.swift
 //  Kiosk
 //
-//  Created by t2023-m0059 on 2023/07/25.
-//
+//  Created by Macbook on 2023/07/28.
 //
 
 import Foundation
 
-class PrintReceipt {
+class PrintCart {
     
-    func printReceipt(payItem: [Menu], remainMoney: Decimal) {
+    func printCart(payItem: [Menu], remainMoney: Decimal) {
         
-        print("\(String(repeating: "-", count: 24)) Receipt \(String(repeating: "-", count: 25))")
-        // 결제 시간
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let currentDate = formatter.string(from: Date())
-        print(" Payment Time : \(currentDate)")
-        
-        print("\(String(repeating: "-", count: 58))")
+        print("\(String(repeating: "-", count: 25)) cart \(String(repeating: "-", count: 27))")
         
         print("\(String(repeating: " ", count: 13))ITEM\(String(repeating: " ", count: 13)) |   Unit  | QTY |   PRICE")
         
@@ -78,39 +70,30 @@ class PrintReceipt {
         }
         
         print("\(String(repeating: "-", count: 58))")
-
+        
         print(string_right(text: "Total Item Quantity : ", lenghth: 45) + string_right(text: String(payItem.count), lenghth: 13))
         
         let sumPrice: Decimal = (sumItem * 1000) * 0.9
-        print(string_right(text: "SUB TOTAL : ", lenghth: 45) + string_right(text: numberFormatter(value: sumPrice) + " KRW", lenghth: 13))
         // 부가세 (10%)
         let surtax: Decimal = (sumItem * 1000) * 0.1
-        print(string_right(text: "VAT (10%) : ", lenghth: 45) + string_right(text: numberFormatter(value: surtax) + " KRW", lenghth: 13))
         
         let payment: Decimal = sumPrice + surtax
         print(string_right(text: "TOTAL : ", lenghth: 45) + string_right(text: numberFormatter(value: payment) + " KRW", lenghth: 13))
-        
-        print("\(String(repeating: "-", count: 58))")
-        
-        print(string_right(text: "PAYMENT METHOD : ", lenghth: 45) + string_right(text: "CASH", lenghth: 13))
-        print(string_right(text: "CURRENT AMOUNT : ", lenghth: 45) + string_right(text: numberFormatter(value: (payment + remainMoney)) + " KRW", lenghth: 13))
-        print(string_right(text: "AMOUNT DUE : ", lenghth: 45) + string_right(text: numberFormatter(value: payment) + " KRW", lenghth: 13))
-        print(string_right(text: "BALANCE : ", lenghth: 45) + string_right(text: numberFormatter(value: remainMoney) + " KRW", lenghth: 13))
-        
-        print("\(String(repeating: "-", count: 58))")
     }
     
     func displayItem(index: Int, typeName: String, items: [Receipt]){
         
-//        let typeList: [String] = ["Burgers", "Dogs", "Sandwiches", "Fries", "Milkshakes", "Drinks"]
+        //        let typeList: [String] = ["Burgers", "Dogs", "Sandwiches", "Fries", "Milkshakes", "Drinks"]
         
         print(" \(index). \(typeName)")
+        
         
         for item in items {
             let itemName: String = item.name.leftPadding(toLength: 30, withPad: " ")
             var itemPrice: String = "\(item.price)"
             itemPrice = itemPrice.leftPadding(toLength: 4, withPad: " ")
             print("\(itemName) | W \(itemPrice)  |  \(item.count)  |  W \(numberFormatter(value: (item.priceSum * 1000)))")
+
         }
     }
     
@@ -137,9 +120,9 @@ class PrintReceipt {
                 break
             }
             
-//            print("index : \(index)")
+            //            print("index : \(index)")
             if count_payItem_name.count(for: payItem_name[index]) > 1 { // 중복되는 것이 하나 이상인 경우
-//                print("if) index : \(index), count : \(count_payItem_name.count(for: payItem_fries_name[index]))")
+                //                print("if) index : \(index), count : \(count_payItem_name.count(for: payItem_fries_name[index]))")
                 payItem_name.removeSubrange((index + 1)...(index + count_payItem_name.count(for: payItem_name[index]) - 1))
                 Item.removeSubrange((index + 1)...(index + count_payItem_name.count(for: payItem_name[index]) - 1))
                 
@@ -159,16 +142,5 @@ class PrintReceipt {
         numberFormatter.numberStyle = .decimal
 
         return numberFormatter.string(for: value)!
-    }
-}
-
-extension String {
-    func leftPadding(toLength: Int, withPad character: Character) -> String {
-        let stringLength = self.count
-        if stringLength < toLength {
-            return String(repeatElement(character, count: toLength - stringLength)) + self
-        } else {
-            return String(self.suffix(toLength))
-        }
     }
 }
