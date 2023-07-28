@@ -4,7 +4,7 @@
 //
 //  Copyright (c) 2023 z-wook. All right reserved.
 //
-//
+
 import Foundation
 // MARK: - 메뉴선택
 final class OrderManager {
@@ -106,7 +106,7 @@ extension OrderManager {
         for i in 0..<pickMenus.count {
             print("\(i + 1). \(pickMenus[i].name) | W \(pickMenus[i].price) |")
         }
-        print("0. 뒤로가기\n")
+        print("0. Home\n")
     }
     
     func sizeCheck(type: Product, userInfo: UserInfo, userInput: Int) {
@@ -117,7 +117,7 @@ extension OrderManager {
             for i in Product.sizeup.productName.indices { // 열거형으로 선언해 놓은 Product에 접근하여 sizeup에 저장된 목록을 sizeList에 저장.
                 sizeList.append(Menu(Product.sizeup.productName[i], Product.sizeup.productPrice[i]))
             }
-            if(type.name == "버거"){
+            if(type.name == "Burger"){
                 sizeList.remove(at: sizeList.count - 1)
             }
             
@@ -125,12 +125,12 @@ extension OrderManager {
             print("[ \(type.productName[userInput - 1]) \(Product.sizeup.name) ]") // 사이즈 선택
             for (index, size) in sizeList.enumerated() { // sizeList에 저장한 목록 표시
                 if size.price < 0 {
-                    print("\(index + 1). \(size.name) | - W \(size.price) |")
+                    print("\(index + 1). \(size.name) | - W \(NSDecimalNumber(decimal: abs(size.price)).doubleValue) |")
                 } else {
-                    print("\(index + 1). \(size.name) | + W \(size.price) |")
+                    print("\(index + 1). \(size.name) | + W \(NSDecimalNumber(decimal: size.price).doubleValue) |")
                 }
             }
-            print("0. 뒤로가기\n")
+            print("0. Home\n")
             
             // 숫자인지 아닌지 구분
             guard let sizeInput = readLine(),
@@ -141,7 +141,7 @@ extension OrderManager {
             
             switch sizeInput {
             case 0:
-                print("뒤로가기를 선택하셨습니다. \n")
+                print("Home를 선택하셨습니다. \n")
                 return
             case (1...sizeList.count):
                 

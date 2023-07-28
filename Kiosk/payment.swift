@@ -4,7 +4,7 @@
 //
 //  Created by Macbook on 2023/07/26.
 //
-//
+
 import Foundation
 
 // MARK: - 장바구니
@@ -15,7 +15,7 @@ func compareTime() -> Bool {
     let components = calendar.dateComponents([.hour, .minute], from: now)
     if let hour = components.hour, let minute = components.minute {
         // 현재 시간이 오후 11시부터 11시 30분 사이인지 확인
-        if hour == 11 && minute >= 30 && minute <= 59 { return true }
+        if hour == 21 && minute >= 30 && minute <= 43 { return true }
     }
     return false
 }
@@ -26,7 +26,8 @@ class Payment {
     lazy var mainAmount = UserInfo.poket.reduce(0) { $0 + $1.price }
     
     deinit  {
-        print("메인화면으로 돌아갑니다.")
+        print("5초 뒤 메인화면으로 돌아갑니다.")
+        sleep(5)
     }
 }
 
@@ -37,7 +38,7 @@ extension Payment {
         
         while true {
             guard UserInfo.poket.isEmpty != true else {
-                print("장바구니가 비었습니다.")
+//                print("장바구니가 비었습니다.")
                 loop.toggle()
                 return
             }
@@ -108,9 +109,8 @@ extension Payment {
     func payment(user: UserInfo) {
         if user.money > mainAmount {
             user.money -= mainAmount
-            mainAmount = 0
             print("결재가 완료됐습니다.")
-            print("잔액 \((user.money * 1000))")
+            PrintReceipt().printReceipt(payItem: UserInfo.poket, remainMoney: (user.money * 1000))
             user.emptyPoket()
             loop.toggle()
             return

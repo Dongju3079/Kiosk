@@ -1,5 +1,12 @@
-import Foundation
 //
+//  main.swift
+//  Kiosk
+//
+//  Created by daelee on 2023/07/24.
+//
+
+import Foundation
+
 func printer() {
     DispatchQueue.global().asyncAfter(wallDeadline: .now() + 60) {
         printer()
@@ -26,6 +33,7 @@ class Kiosk {
     let user = UserInfo()
     
     func order() {
+        
         printer()
         while true {
             notice()
@@ -61,7 +69,6 @@ class Kiosk {
                 var payment: Payment? = Payment()
                 guard let test = payment else { return }
                 test.basket(userInfo: user)
-                //        OrderManager().pay(userInfo: user)
                 payment = nil
             default:
                 print("‼️ 숫자로 입력하세요.")
@@ -75,6 +82,7 @@ extension Kiosk {
     
     // 안내문구
     func notice() {
+        
         print("""
 
                 *---------------------*
@@ -91,11 +99,10 @@ extension Kiosk {
                 | 0. EXIT         👋🏼  |
                 *_____________________*
 
+                                
                 """)
         print("🖥️ 나의 잔고: \(user.money * 1000)")
-        print("🖥️ 메뉴를 입력하세요: ", terminator: "")        // print("\(allMenu.count + 1). CALCULATION [나의 장바구니]")
-
-    }
+        print("🖥️ 메뉴를 입력하세요: ", terminator: "")        
     
     // 장바구니
     func basket() {

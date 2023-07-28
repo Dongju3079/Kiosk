@@ -4,7 +4,7 @@
 //
 //  Created by daelee on 2023/07/24.
 //
-//
+
 import Foundation
 
 // MARK: - 메뉴리스트
@@ -45,9 +45,9 @@ class UserInfo {
 
 class Receipt: Menu {
     var count: Int
-    var priceSum: Double
+    var priceSum: Decimal
     
-    init(name: String, price: Decimal, count: Int, priceSum: Double) {
+    init(name: String, price: Decimal, count: Int, priceSum: Decimal) {
         self.count = count
         self.priceSum = priceSum
         super.init(name, price)
