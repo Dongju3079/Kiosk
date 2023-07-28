@@ -1,3 +1,11 @@
+
+//
+//  model.swift
+//  Kiosk
+//
+//  Created by daelee on 2023/07/24.
+//
+//
 import Foundation
 
 // MARK: - 메뉴리스트
