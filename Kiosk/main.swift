@@ -108,7 +108,7 @@ extension Kiosk {
     
     // 60초간격 장바구니 표시
     func printer() {
-        DispatchQueue.global().asyncAfter(wallDeadline: .now() + 5) { [weak self] in
+        DispatchQueue.global().asyncAfter(wallDeadline: .now() + 60) { [weak self] in
             print("\n")
             self?.cartManager.printCart(payItem: UserInfo.poket, remainMoney: (self!.userInfo.money * 1000))
         }
