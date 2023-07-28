@@ -5,10 +5,6 @@ class ShoppingCart {
     func printShoppingCart(payItem: [Menu]) {
         
         print("\(String(repeating: "-", count: 24)) Order \(String(repeating: "-", count: 25))")
-//        print ("""
-//                [장바구니]
-//                ---------주문내역확인-----------
-//                """)
         
         var sumItem: Decimal = 0
         
@@ -20,29 +16,24 @@ class ShoppingCart {
         var payItem_drinks: [Menu] = []
         
         for item in payItem {
-            if (Product.burgers.productName.contains(item.name)) {
+            if (item.name.contains(Product.burger.productName[0]) || item.name.contains(Product.burger.productName[1]) || item.name.contains(Product.burger.productName[2]) || item.name.contains(Product.burger.productName[3])) { // 햄버거에는 사이즈가 추가되기 때문에 원래 햄버거 메뉴부분과 겹치는 부분이 있는지로 확인함.
                 // 햄버거
-                payItem_burgers.append(item)
-            }
-            else if(Product.hotdogs.productName.contains(item.name)) {
+                payItem_burgers.append(payItem(name: item.name, price: item.price, count: 1, priceSum: item.price))
+            } else if(Product.hotdog.productName.contains(item.name)) {
                 // 핫도그
-                payItem_dogs.append(item)
-            }
-            else if(Product.sandwiches.productName.contains(item.name)) {
+                payItem_dogs.append(payItem(name: item.name, price: item.price, count: 1, priceSum: item.price))
+            } else if(Product.sandwiches.productName.contains(item.name)) {
                 // 샌드위치
-                payItem_sandwiches.append(item)
-            }
-            else if(Product.fries.productName.contains(item.name)) {
+                payItem_sandwiches.append(payItem(name: item.name, price: item.price, count: 1, priceSum: item.price))
+            } else if(item.name.contains(Product.fries.productName[0]) || item.name.contains(Product.fries.productName[1])) { // 감자 튀김에는 사이즈가 추가되기 때문에 원래 감자튀김 메뉴부분과 겹치는 부분이 있는지로 확인함.
                 // 감자튀김
-                payItem_fries.append(item)
-            }
-            else if(Product.shake.productName.contains(item.name)) {
+                payItem_fries.append(payItem(name: item.name, price: item.price, count: 1, priceSum: item.price))
+            } else if(Product.shake.productName.contains(item.name)) {
                 // 밀크쉐이크
-                payItem_milkshakes.append(item)
-            }
-            else if(Product.drink.productName.contains(item.name)) {
+                payItem_milkshakes.append(payItem(name: item.name, price: item.price, count: 1, priceSum: item.price))
+            } else if(Product.drink.productName.contains(item.name)) {
                 // 음료
-                payItem_drinks.append(item)
+                payItem_drinks.append(payItem(name: item.name, price: item.price, count: 1, priceSum: item.price))
             }
             sumItem += item.price
         }
