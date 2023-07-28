@@ -11,8 +11,6 @@ final class OrderManager {
     
     func orderFoods(type: Product, userInfo: UserInfo, completion: () -> Void) {
         
-        print("test")
-        
         var foodList: [Menu] = []
         
         for i in type.productName.indices {
@@ -20,7 +18,7 @@ final class OrderManager {
         }
         
         while true {
-            printfoodsMenu(type: type, foodList)
+            printfoodsMenu(type: type, foodList, pickMenus: UserInfo.poket)
             guard let userInput = readLine(),
                   let userInput = Int(userInput) else {
                 print("올바른 메뉴를 입력해주세요. 가드 \n")
@@ -34,12 +32,12 @@ final class OrderManager {
             
             switch userInput {
             case 0:
-                print("뒤로가기를 선택하셨습니다. \n")
+                print("Home를 선택하셨습니다. \n")
                 completion()
                 return
             case (1...foodList.count):
                 // 감자 튀김, 버거인 경우 size를 선택해야 함으로
-                if type.name == "감자튀김" || type.name == "버거" {
+                if type.name == "Fries" || type.name == "Burger" {
                     sizeCheck(type: type, userInfo: userInfo, userInput: userInput)
                 } else {
                     userInfo.updatePoket(food: foodList[userInput - 1])
@@ -77,7 +75,7 @@ final class OrderManager {
 }
 
 extension OrderManager {
-    func printDrinksMenu(type: Product, _ drinkList: [Menu], pickMenus: [Menu]) {
+    func printfoodsMenu(type: Product, _ drinkList: [Menu], pickMenus: [Menu]) {
         let totalLength = 40
         let paddingLength = totalLength - Int(type.rawValue.count) - 10
         let padding = String(repeating: " ", count: paddingLength / 2)
@@ -97,7 +95,7 @@ extension OrderManager {
 
 
         print("*-----------------------------------*")
-        print("|  0. 뒤로가기 ⏪                     |")
+        print("|  0. Home                          |")
         print("*-----------------------------------*")
     }
     
@@ -106,7 +104,7 @@ extension OrderManager {
         for i in 0..<pickMenus.count {
             print("\(i + 1). \(pickMenus[i].name) | W \(pickMenus[i].price) |")
         }
-        print("0. 뒤로가기\n")
+        print("0. Home\n")
     }
     
     func sizeCheck(type: Product, userInfo: UserInfo, userInput: Int) {
@@ -117,7 +115,7 @@ extension OrderManager {
             for i in Product.sizeup.productName.indices { // 열거형으로 선언해 놓은 Product에 접근하여 sizeup에 저장된 목록을 sizeList에 저장.
                 sizeList.append(Menu(Product.sizeup.productName[i], Product.sizeup.productPrice[i]))
             }
-            if(type.name == "버거"){
+            if(type.name == "Burger"){
                 sizeList.remove(at: sizeList.count - 1)
             }
             
@@ -125,12 +123,12 @@ extension OrderManager {
             print("[ \(type.productName[userInput - 1]) \(Product.sizeup.name) ]") // 사이즈 선택
             for (index, size) in sizeList.enumerated() { // sizeList에 저장한 목록 표시
                 if size.price < 0 {
-                    print("\(index + 1). \(size.name) | - W \(size.price) |")
+                    print("\(index + 1). \(size.name) | - W \(NSDecimalNumber(decimal: abs(size.price)).doubleValue) |")
                 } else {
-                    print("\(index + 1). \(size.name) | + W \(size.price) |")
+                    print("\(index + 1). \(size.name) | + W \(NSDecimalNumber(decimal: size.price).doubleValue) |")
                 }
             }
-            print("0. 뒤로가기\n")
+            print("0. Home\n")
             
             // 숫자인지 아닌지 구분
             guard let sizeInput = readLine(),
@@ -141,7 +139,7 @@ extension OrderManager {
             
             switch sizeInput {
             case 0:
-                print("뒤로가기를 선택하셨습니다. \n")
+                print("Home를 선택하셨습니다. \n")
                 return
             case (1...sizeList.count):
                 

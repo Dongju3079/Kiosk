@@ -21,23 +21,6 @@ let closure: () -> Void = {
     //sleep(3)
 }
 
-func printHomeKiosk() {
-    print("""
-            *---------------------*
-            |  FIVE JAYS MENU     |
-            *_____________________*
-            | 1. Burgers      []  |
-            | 2. Hotdog       []  |
-            | 3. Sandwiches   []  |
-            | 4. FREIES       []  |
-            | 5. DRINK        []  |
-            | 6. SHAKE        []  |
-            | 7. POCKET       []  |
-            | 0. Exit         []  |
-            -----------------------
-            """)
-}
-
 class Kiosk {
     var allMenu = MainName.allCases
     let user = UserInfo()
@@ -94,7 +77,6 @@ extension Kiosk {
     
     // 안내문구
     func notice() {
-        printHomeKiosk()
         
         print("""
 
@@ -112,13 +94,13 @@ extension Kiosk {
                 | 0. EXIT         👋🏼  |
                 *_____________________*
 
+                
+                나의 잔고: \(user.money * 1000)
+                
                 """)
         print("🖥️ 메뉴를 입력하세요: ", terminator: "")
         // print("\(allMenu.count + 1). CALCULATION [나의 장바구니]")
         // print("나의 잔고: \(user.money * 1000)")
-
-        나의 잔고: \(user.money * 1000)
-        """) // 장바구니 항목 추가
     }
     
     // 장바구니

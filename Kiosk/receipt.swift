@@ -80,7 +80,7 @@ class PrintReceipt {
 
         print(string_right(text: "Total Item Quantity : ", lenghth: 45) + string_right(text: String(payItem.count), lenghth: 13))
         
-        var sumPrice: Decimal = sumItem * 1000
+        let sumPrice: Decimal = sumItem * 1000
         print(string_right(text: "SUB TOTAL : ", lenghth: 45) + string_right(text: numberFormatter(value: sumPrice) + " KRW", lenghth: 13))
         // 부가세 (10%)
         let surtax: Decimal = sumPrice * 0.1
@@ -105,7 +105,7 @@ class PrintReceipt {
         print(" \(index + 1). \(typeList[index])")
         
         for item in items {
-            var itemName: String = item.name.leftPadding(toLength: 30, withPad: " ")
+            let itemName: String = item.name.leftPadding(toLength: 30, withPad: " ")
             print("\(itemName) | W  \(item.price)  |  \(item.count)  |  W \(numberFormatter(value: (item.priceSum * 1000)))")
         }
     }
@@ -146,7 +146,7 @@ class PrintReceipt {
     }
     
     func string_right(text: String, lenghth: Int) -> String{
-        var textLeft: String = text.leftPadding(toLength: lenghth, withPad: " ")
+        let textLeft: String = text.leftPadding(toLength: lenghth, withPad: " ")
         return textLeft
     }
     
