@@ -104,7 +104,7 @@ final class OrderManager {
             }
             
             print("*-----------------------------------*")
-            print("|  0. Home                          |")
+            print("|  0. BACK                          |")
             print("*-----------------------------------*")
             print("")
             print("🖥️ 메뉴를 입력하세요: ", terminator: "")

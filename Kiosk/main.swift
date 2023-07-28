@@ -11,6 +11,8 @@ import Foundation
 class Kiosk {
     var allMenu = MainName.allCases
     let user = UserInfo()
+    let cartManager = PrintCart()
+    let userInfo = UserInfo()
     
     let closure: () -> Void = {
         var pocketList: String = ""
@@ -20,7 +22,7 @@ class Kiosk {
         print("🛒 장바구니 🛒")
         print(pocketList)
         print("~~~~~~~~ 3초 대기 ~~~~~~~~")
-        //sleep(3)
+        sleep(3)
     }
 }
 
@@ -106,15 +108,13 @@ extension Kiosk {
     
     // 60초간격 장바구니 표시
     func printer() {
-        DispatchQueue.global().asyncAfter(wallDeadline: .now() + 60) {
-            self.printer()
-            print("""
-            장바구니: \(UserInfo.poket.map({ $0.name }).joined(separator: " ,"))
-            총 금액: \((UserInfo.poket.reduce(0) { $0 + $1.price }) * 1000)
-            """)
+        DispatchQueue.global().asyncAfter(wallDeadline: .now() + 5) { [weak self] in
+            print("\n")
+            self?.cartManager.printCart(payItem: UserInfo.poket, remainMoney: (self!.userInfo.money * 1000))
         }
     }
 }
+
 
 
 var user = Kiosk()
