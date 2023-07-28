@@ -123,9 +123,9 @@ extension OrderManager {
             print("[ \(type.productName[userInput - 1]) \(Product.sizeup.name) ]") // 사이즈 선택
             for (index, size) in sizeList.enumerated() { // sizeList에 저장한 목록 표시
                 if size.price < 0 {
-                    print("\(index + 1). \(size.name) | - W \(NSDecimalNumber(decimal: abs(size.price)).doubleValue) |")
+                    print("\(index + 1). \(size.name) | W - \(NSDecimalNumber(decimal: abs(size.price)).doubleValue) |")
                 } else {
-                    print("\(index + 1). \(size.name) | + W \(NSDecimalNumber(decimal: size.price).doubleValue) |")
+                    print("\(index + 1). \(size.name) | W + \(NSDecimalNumber(decimal: size.price).doubleValue) |")
                 }
             }
             print("0. Home\n")
