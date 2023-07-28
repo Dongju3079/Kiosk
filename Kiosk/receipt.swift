@@ -63,28 +63,28 @@ class PrintReceipt {
         payItem_milkshakes = countItem(payItem: payItem_milkshakes)
         payItem_drinks = countItem(payItem: payItem_drinks)
         
-        // 버거
-        displayItem(index: 0, items: payItem_burgers)
-        // 핫도그
-        displayItem(index: 1, items: payItem_dogs)
-        // 샌드위치
-        displayItem(index: 2, items: payItem_sandwiches)
-        // 감자튀김
-        displayItem(index: 3, items: payItem_fries)
-//        displayItem(index: 3, items: payItem_fries)
-        // 밀크쉐이크
-        displayItem(index: 4, items: payItem_milkshakes)
-        // 마실 것
-        displayItem(index: 5, items: payItem_drinks)
+        // display에 사용되는 변수
+        let displayTypeName: [String] = ["Burgers", "Dogs", "Sandwiches", "Fries", "Milkshakes", "Drinks"]
+        let displayTypeItem: [[Receipt]] = [payItem_burgers, payItem_dogs, payItem_sandwiches, payItem_fries, payItem_milkshakes, payItem_drinks]
+        
+        var MenuTitleNum: Int = 0
+        
+        for index in 0..<displayTypeName.count {
+            if !displayTypeItem[index].isEmpty {
+                MenuTitleNum += 1
+                displayItem(index: MenuTitleNum, typeName: displayTypeName[index], items: displayTypeItem[index])
+            } else {
+            }
+        }
         
         print("\(String(repeating: "-", count: 58))")
 
         print(string_right(text: "Total Item Quantity : ", lenghth: 45) + string_right(text: String(payItem.count), lenghth: 13))
         
-        let sumPrice: Decimal = sumItem * 1000
+        let sumPrice: Decimal = (sumItem * 1000) * 0.9
         print(string_right(text: "SUB TOTAL : ", lenghth: 45) + string_right(text: numberFormatter(value: sumPrice) + " KRW", lenghth: 13))
         // 부가세 (10%)
-        let surtax: Decimal = sumPrice * 0.1
+        let surtax: Decimal = (sumItem * 1000) * 0.1
         print(string_right(text: "VAT (10%) : ", lenghth: 45) + string_right(text: numberFormatter(value: surtax) + " KRW", lenghth: 13))
         
         let payment: Decimal = sumPrice + surtax
@@ -99,15 +99,18 @@ class PrintReceipt {
         
         print("\(String(repeating: "-", count: 58))")
     }
-    func displayItem(index: Int, items: [Receipt]){
+    
+    func displayItem(index: Int, typeName: String, items: [Receipt]){
         
-        let typeList: [String] = ["Burgers", "Dogs", "Sandwiches", "Fries", "Milkshakes", "Drinks"]
+//        let typeList: [String] = ["Burgers", "Dogs", "Sandwiches", "Fries", "Milkshakes", "Drinks"]
         
-        print(" \(index + 1). \(typeList[index])")
+        print(" \(index). \(typeName)")
         
         for item in items {
             let itemName: String = item.name.leftPadding(toLength: 30, withPad: " ")
-            print("\(itemName) | W  \(item.price)  |  \(item.count)  |  W \(numberFormatter(value: (item.priceSum * 1000)))")
+            var itemPrice: String = "\(item.price)"
+            itemPrice = itemPrice.leftPadding(toLength: 4, withPad: " ")
+            print("\(itemName) | W \(itemPrice)  |  \(item.count)  |  W \(numberFormatter(value: (item.priceSum * 1000)))")
         }
     }
     

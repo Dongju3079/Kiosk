@@ -103,21 +103,21 @@ extension Kiosk {
                                 
                 """)
         print("🖥️ 나의 잔고: \(user.money * 1000)")
-        print("🖥️ 메뉴를 입력하세요: ", terminator: "")
-    }
-    
-    // 장바구니
-    func basket() {
-        guard UserInfo.poket.isEmpty != true else {
-            print("장바구니가 비었습니다.")
-            return
+        print("🖥️ 메뉴를 입력하세요: ", terminator: "")        
+        
+        // 장바구니
+        func basket() {
+            guard UserInfo.poket.isEmpty != true else {
+                print("장바구니가 비었습니다.")
+                return
+            }
+            
+            var payment: Payment? = Payment()
+            guard let test = payment else { return }
+            test.basket(userInfo: user)
+            payment = nil
+            
         }
-        
-        var payment: Payment? = Payment()
-        guard let test = payment else { return }
-        test.basket(userInfo: user)
-        payment = nil
-        
     }
 }
 
